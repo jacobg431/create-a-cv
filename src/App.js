@@ -1,4 +1,4 @@
-import './assets/output.css';
+import './assets/global.css';
 import Home from './pages/home'
 
 function App() {
