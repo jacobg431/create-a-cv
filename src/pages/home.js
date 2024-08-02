@@ -12,8 +12,6 @@ import { ExperienceSegment } from "@/components/segments/experience"
 import { PersonaliaSegment } from "@/components/segments/personalia"
 import { SkillsSegment } from "@/components/segments/skills"
 
-// Hello
-
 const formSchema = z.object({
     username: z.string().min(2, {
         message: "Username must be at least 2 characters.",
