@@ -1,10 +1,7 @@
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
-
 import { CertificationsSegment } from "@/components/segments/certifications";
 import { CoursesSegment } from "@/components/segments/courses";
 import { EducationSegment } from "@/components/segments/education";
@@ -12,18 +9,9 @@ import { ExperienceSegment } from "@/components/segments/experience";
 import { PersonaliaSegment } from "@/components/segments/personalia";
 import { SkillsSegment } from "@/components/segments/skills";
 
-const formSchema = z.object({
-	username: z.string().min(2, {
-		message: "Username must be at least 2 characters.",
-	}),
-});
-
 function Home() {
 	const form = useForm({
-		resolver: zodResolver(formSchema),
-		defaultValues: {
-			username: "",
-		},
+		defaultValues: {},
 	});
 
 	function onSubmit(values) {
@@ -46,7 +34,7 @@ function Home() {
 							<CoursesSegment form={form} />
 
 							<div className="flex justify-end">
-								<Button type="submit">Generate CV</Button>
+								<Button type="submit">Create your CV</Button>
 							</div>
 						</form>
 					</Form>
