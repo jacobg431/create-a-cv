@@ -32,7 +32,6 @@ function Home() {
 
 	return (
 		<>
-			Fc
 			<nav />
 			<main>
 				<div className="max-w-3xl mx-auto p-6 md:p-8 lg:p-10">
