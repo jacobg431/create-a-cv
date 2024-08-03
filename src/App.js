@@ -1,10 +1,8 @@
-import './assets/global.css';
-import Home from './pages/home'
+import "./assets/global.css";
+import Home from "./pages/home";
 
 function App() {
-  return (
-        <Home />
-  );
+	return <Home />;
 }
 
 export default App;
