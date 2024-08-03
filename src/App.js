@@ -1,5 +1,5 @@
 import "@/assets/global.css";
-import Home from "@/pages/Home-2";
+import Home from "@/pages/Home";
 
 function App() {
 	return <Home />;
