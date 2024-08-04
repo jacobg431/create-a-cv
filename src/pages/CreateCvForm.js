@@ -11,11 +11,52 @@ import { SkillsSegment } from "@/components/segments/skills";
 
 function CreateCvForm() {
 	const form = useForm({
-		defaultValues: {},
+		defaultValues: {
+			personaliaSegment: {
+				firstName: "",
+				lastName: "",
+				email: "",
+				phone: "",
+				dateOfBirth: null,
+				gender: "",
+				address: "",
+				address2: "",
+				zipCode: "",
+				city: "",
+				country: "",
+				summary: "",
+			},
+			educationSegment: {
+				school: "",
+				degree: "",
+				startDate: null,
+				endDate: null,
+			},
+			experienceSegment: {
+				company: "",
+				position: "",
+				startDate: null,
+				endDate: null,
+				description: "",
+			},
+			skillsSegment: {
+				skills: "",
+			},
+			certificationsSegment: {
+				name: "",
+				issuer: "",
+				startDate: null,
+				endDate: null,
+			},
+			coursesSegment: {
+				coursename: "",
+				courseinstructor: "",
+			},
+		},
 	});
 
 	function onSubmit(values) {
-		console.log(values);
+		console.log("Form Values:", values);
 	}
 
 	return (

@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button";
 import { DatePicker } from "@/components/ui/datepicker";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import {
 	Dialog,
 	DialogContent,
@@ -12,12 +11,7 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
-import {
-	FormControl,
-	FormField,
-	FormItem,
-	FormLabel,
-} from "@/components/ui/form";
+import { FormControl, FormItem, FormLabel } from "@/components/ui/form";
 import {
 	Select,
 	SelectContent,
@@ -27,171 +21,93 @@ import {
 } from "@/components/ui/select";
 
 export function PersonaliaSegment({ form }) {
+	const { register } = form;
+
 	return (
 		<>
 			<h1 className="text-xl font-bold mb-6">Personalia</h1>
 			<div className="grid grid-cols-2 gap-4 mb-6">
-				<FormField
-					control={form.control}
-					name="firstname"
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>First name</FormLabel>
-							<FormControl>
-								<Input {...field} />
-							</FormControl>
-						</FormItem>
-					)}
-				/>
-				<FormField
-					control={form.control}
-					name="lastname"
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>Last name</FormLabel>
-							<FormControl>
-								<Input {...field} />
-							</FormControl>
-						</FormItem>
-					)}
-				/>
-				<FormField
-					control={form.control}
-					name="email"
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>Email address</FormLabel>
-							<FormControl>
-								<Input {...field} />
-							</FormControl>
-						</FormItem>
-					)}
-				/>
-				<FormField
-					control={form.control}
-					name="phone"
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>Phone number</FormLabel>
-							<FormControl>
-								<Input {...field} />
-							</FormControl>
-						</FormItem>
-					)}
-				/>
-				<FormField
-					control={form.control}
-					name="dateofbirth"
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>Date of birth</FormLabel>
-							<FormControl>
-								<DatePicker {...field} />
-							</FormControl>
-						</FormItem>
-					)}
-				/>
-				<FormField
-					control={form.control}
-					name="gender"
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>Gender</FormLabel>
-							<FormControl>
-								<Select {...field}>
-									<SelectTrigger>
-										<SelectValue />
-									</SelectTrigger>
-									<SelectContent>
-										<SelectItem value="female">Female</SelectItem>
-										<SelectItem value="male">Male</SelectItem>
-									</SelectContent>
-								</Select>
-							</FormControl>
-						</FormItem>
-					)}
-				/>
+				<FormItem>
+					<FormLabel>First name</FormLabel>
+					<FormControl>
+						<Input {...register("personaliaSegment.firstName")} />
+					</FormControl>
+				</FormItem>
+				<FormItem>
+					<FormLabel>Last name</FormLabel>
+					<FormControl>
+						<Input {...register("personaliaSegment.lastName")} />
+					</FormControl>
+				</FormItem>
+				<FormItem>
+					<FormLabel>Email address</FormLabel>
+					<FormControl>
+						<Input {...register("personaliaSegment.email")} />
+					</FormControl>
+				</FormItem>
+				<FormItem>
+					<FormLabel>Phone number</FormLabel>
+					<FormControl>
+						<Input {...register("personaliaSegment.phone")} />
+					</FormControl>
+				</FormItem>
+				<FormItem>
+					<FormLabel>Date of birth</FormLabel>
+					<FormControl>
+						<DatePicker {...register("personaliaSegment.dateOfBirth")} />
+					</FormControl>
+				</FormItem>
+				<FormItem>
+					<FormLabel>Gender</FormLabel>
+					<FormControl>
+						<Select {...register("personaliaSegment.gender")}>
+							<SelectTrigger>
+								<SelectValue />
+							</SelectTrigger>
+							<SelectContent>
+								<SelectItem value="female">Female</SelectItem>
+								<SelectItem value="male">Male</SelectItem>
+							</SelectContent>
+						</Select>
+					</FormControl>
+				</FormItem>
+				<FormItem>
+					<FormLabel>Home address</FormLabel>
+					<FormControl>
+						<Input {...register("personaliaSegment.address")} />
+					</FormControl>
+				</FormItem>
+				<FormItem>
+					<FormLabel>Home address 2nd Line (Optional)</FormLabel>
+					<FormControl>
+						<Input {...register("personaliaSegment.address2")} />
+					</FormControl>
+				</FormItem>
+				<FormItem>
+					<FormLabel>ZIP code</FormLabel>
+					<FormControl>
+						<Input {...register("personaliaSegment.zipCode")} />
+					</FormControl>
+				</FormItem>
+				<FormItem>
+					<FormLabel>City</FormLabel>
+					<FormControl>
+						<Input {...register("personaliaSegment.city")} />
+					</FormControl>
+				</FormItem>
+				<FormItem>
+					<FormLabel>Country</FormLabel>
+					<FormControl>
+						<Input {...register("personaliaSegment.country")} />
+					</FormControl>
+				</FormItem>
+				<FormItem>
+					<FormLabel>Summary</FormLabel>
+					<FormControl>
+						<Input {...register("personaliaSegment.summary")} />
+					</FormControl>
+				</FormItem>
 			</div>
-
-			<div className="grid grid-cols-2 gap-4 mb-6">
-				<FormField
-					control={form.control}
-					name="address"
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>Home address</FormLabel>
-							<FormControl>
-								<Input {...field} />
-							</FormControl>
-						</FormItem>
-					)}
-				/>
-				<FormField
-					control={form.control}
-					name="address2"
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>Home address 2nd Line (Optional)</FormLabel>
-							<FormControl>
-								<Input {...field} />
-							</FormControl>
-						</FormItem>
-					)}
-				/>
-			</div>
-			<div className="grid grid-cols-3 gap-4 mb-6">
-				<FormField
-					control={form.control}
-					name="zipcode"
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>ZIP code</FormLabel>
-							<FormControl>
-								<Input {...field} />
-							</FormControl>
-						</FormItem>
-					)}
-				/>
-				<FormField
-					control={form.control}
-					name="city"
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>City</FormLabel>
-							<FormControl>
-								<Input {...field} />
-							</FormControl>
-						</FormItem>
-					)}
-				/>
-				<FormField
-					control={form.control}
-					name="country"
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>Country</FormLabel>
-							<FormControl>
-								<Input {...field} />
-							</FormControl>
-						</FormItem>
-					)}
-				/>
-			</div>
-			<div className="grid grid-cols-1 gap-4 mb-6">
-				<FormField
-					control={form.control}
-					name="summary"
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>Summary</FormLabel>
-							<FormControl>
-								<Textarea {...field} />
-							</FormControl>
-						</FormItem>
-					)}
-				/>
-			</div>
-
 			<Dialog>
 				<DialogTrigger>
 					<Button variant="outline">Upload Profile Picture</Button>
@@ -204,7 +120,10 @@ export function PersonaliaSegment({ form }) {
 							exceed a size of 256 MB.
 						</DialogDescription>
 					</DialogHeader>
-					<Input type="file" />
+					<Input
+						type="file"
+						{...register("personaliaSegment.profilePicture")}
+					/>
 				</DialogContent>
 			</Dialog>
 		</>
