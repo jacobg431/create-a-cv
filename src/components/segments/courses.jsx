@@ -52,22 +52,25 @@ export function CoursesSegment({ form }) {
 						/>
 					</FormControl>
 				</FormItem>
+
 				<FormItem>
 					<FormLabel>Duration</FormLabel>
 					<FormControl>
 						<Controller
-							control={control}
 							name="coursesSegment.duration"
-							render={({ field }) => (
-								<Select {...field}>
+							control={control}
+							render={({ field: { onChange, value } }) => (
+								<Select onValueChange={onChange}>
 									<SelectTrigger>
-										<SelectValue />
+										<SelectValue>
+											{value ? value : "Select duration"}
+										</SelectValue>
 									</SelectTrigger>
 									<SelectContent>
-										<SelectItem value="hours">Hours</SelectItem>
-										<SelectItem value="days">Days</SelectItem>
-										<SelectItem value="weeks">Weeks</SelectItem>
-										<SelectItem value="months">Months</SelectItem>
+										<SelectItem value="Hours">Hours</SelectItem>
+										<SelectItem value="Days">Days</SelectItem>
+										<SelectItem value="Weeks">Weeks</SelectItem>
+										<SelectItem value="Months">Months</SelectItem>
 									</SelectContent>
 								</Select>
 							)}

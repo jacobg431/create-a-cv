@@ -67,15 +67,21 @@ export function PersonaliaSegment({ form }) {
 				<FormItem>
 					<FormLabel>Gender</FormLabel>
 					<FormControl>
-						<Select {...register("personaliaSegment.gender")}>
-							<SelectTrigger>
-								<SelectValue />
-							</SelectTrigger>
-							<SelectContent>
-								<SelectItem value="female">Female</SelectItem>
-								<SelectItem value="male">Male</SelectItem>
-							</SelectContent>
-						</Select>
+						<Controller
+							name="personaliaSegment.gender"
+							control={control}
+							render={({ field: { onChange, value } }) => (
+								<Select onValueChange={onChange}>
+									<SelectTrigger>
+										<SelectValue>{value ? value : "Select gender"}</SelectValue>
+									</SelectTrigger>
+									<SelectContent>
+										<SelectItem value="Female">Female</SelectItem>
+										<SelectItem value="Male">Male</SelectItem>
+									</SelectContent>
+								</Select>
+							)}
+						/>
 					</FormControl>
 				</FormItem>
 				<FormItem>
