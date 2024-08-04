@@ -10,6 +10,7 @@ import {
 	DialogHeader,
 	DialogTitle,
 	DialogTrigger,
+	DialogClose,
 } from "@/components/ui/dialog";
 import { FormControl, FormItem, FormLabel } from "@/components/ui/form";
 import {
@@ -122,7 +123,7 @@ export function PersonaliaSegment({ form }) {
 				</FormItem>
 			</div>
 			<Dialog>
-				<DialogTrigger>
+				<DialogTrigger asChild>
 					<Button variant="outline">Upload Profile Picture</Button>
 				</DialogTrigger>
 				<DialogContent>
@@ -137,6 +138,10 @@ export function PersonaliaSegment({ form }) {
 						type="file"
 						{...register("personaliaSegment.profilePicture")}
 					/>
+
+					<DialogClose asChild>
+						<Button type="button">Confirm</Button>
+					</DialogClose>
 				</DialogContent>
 			</Dialog>
 		</>

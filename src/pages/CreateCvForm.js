@@ -66,9 +66,9 @@ function CreateCvForm() {
 		<>
 			<nav />
 			<main>
-				<div className="max-w-3xl mx-auto p-6 md:p-8 lg:p-10 bg-white shadow-md">
+				<div className="max-w-4xl mx-auto p-6 md:p-8 lg:p-10 bg-white shadow-md">
 					<h1 className="text-3xl font-bold mb-4">Fill in the form</h1>
-					<h2 className="text-l mb-6">We'll take care of the rest</h2>
+					<h2 className="text-l mb-6">We'll take care of the rest.</h2>
 					<Form {...form}>
 						<form
 							onSubmit={form.handleSubmit(onSubmit)}
