@@ -1,8 +1,8 @@
 import "@/assets/global.css";
-import Home from "@/pages/Home";
+import CreateCvForm from "@/pages/CreateCvForm";
 
 function App() {
-	return <Home />;
+	return <CreateCvForm />;
 }
 
 export default App;

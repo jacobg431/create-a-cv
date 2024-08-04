@@ -19,87 +19,86 @@ import {
 
 export function CoursesSegment({ form }) {
 	function onAddCourseHandler() {
-		return;
+		// Logic to add a new course
 	}
 
 	function onRemoveCourseHandler() {
-		return;
+		// Logic to remove a course
 	}
 
 	return (
 		<>
 			<h1 className="text-xl font-bold mb-6">Courses</h1>
-			<div>
-				<div className="grid grid-cols-2 gap-4">
-					<FormField
-						control={form.control}
-						name="coursename"
-						render={({ field }) => (
-							<FormItem>
-								<FormControl>
-									<Input placeholder="Name" {...field} />
-								</FormControl>
-							</FormItem>
-						)}
-					/>
-					<FormField
-						control={form.control}
-						name="courseinstructor"
-						render={({ field }) => (
-							<FormItem>
-								<FormControl>
-									<Input placeholder="Instructor" {...field} />
-								</FormControl>
-							</FormItem>
-						)}
-					/>
-					<FormField
-						control={form.control}
-						name="coursecompletiondate"
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel>Completion Date</FormLabel>
-								<FormControl>
-									<DatePicker {...field} />
-								</FormControl>
-							</FormItem>
-						)}
-					/>
-					<FormField
-						control={form.control}
-						name="courseduration"
-						render={({ field }) => (
-							<FormItem>
-								<FormControl>
-									<Select {...field}>
-										<SelectTrigger>
-											<SelectValue placeholder="Duration" />
-										</SelectTrigger>
-										<SelectContent>
-											<SelectItem value="hours">Hours</SelectItem>
-											<SelectItem value="days">Days</SelectItem>
-											<SelectItem value="weeks">Weeks</SelectItem>
-											<SelectItem value="months">Months</SelectItem>
-										</SelectContent>
-									</Select>
-								</FormControl>
-							</FormItem>
-						)}
-					/>
-				</div>
-				<div className="grid grid-cols-1 gap-4">
-					<Button
-						type="button"
-						variant="outline"
-						onClick={onRemoveCourseHandler}
-					>
-						Remove
-					</Button>
-				</div>
+			<div className="grid grid-cols-2 gap-4 mb-6">
+				<FormField
+					control={form.control}
+					name="coursename"
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Name</FormLabel>
+							<FormControl>
+								<Input {...field} />
+							</FormControl>
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name="courseinstructor"
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Instructor</FormLabel>
+							<FormControl>
+								<Input {...field} />
+							</FormControl>
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name="coursecompletiondate"
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Completion date</FormLabel>
+							<FormControl>
+								<DatePicker {...field} />
+							</FormControl>
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name="courseduration"
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Duration</FormLabel>
+							<FormControl>
+								<Select {...field}>
+									<SelectTrigger>
+										<SelectValue />
+									</SelectTrigger>
+									<SelectContent>
+										<SelectItem value="hours">Hours</SelectItem>
+										<SelectItem value="days">Days</SelectItem>
+										<SelectItem value="weeks">Weeks</SelectItem>
+										<SelectItem value="months">Months</SelectItem>
+									</SelectContent>
+								</Select>
+							</FormControl>
+						</FormItem>
+					)}
+				/>
 			</div>
-			<Button type="button" onClick={onAddCourseHandler}>
-				Add Education
-			</Button>
+			<div className="flex justify-start gap-4">
+				<Button type="button" onClick={onAddCourseHandler}>
+					Add course
+				</Button>
+				<Button type="button" onClick={onRemoveCourseHandler}>
+					Remove course
+				</Button>
+			</div>
 		</>
 	);
 }
+
+export default CoursesSegment;

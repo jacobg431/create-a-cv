@@ -13,91 +13,90 @@ import {
 
 export function ExperienceSegment({ form }) {
 	function onAddExperienceHandler() {
-		return;
+		// Logic to add experience
 	}
 
 	function onRemoveExperienceHandler() {
-		return;
+		// Logic to remove experience
 	}
 
 	return (
 		<>
 			<h1 className="text-xl font-bold mb-6">Experience</h1>
-			<div>
-				<div className="grid grid-cols-2 gap-4">
-					<FormField
-						control={form.control}
-						name="company"
-						render={({ field }) => (
-							<FormItem>
-								<FormControl>
-									<Input placeholder="Company" {...field} />
-								</FormControl>
-							</FormItem>
-						)}
-					/>
-					<FormField
-						control={form.control}
-						name="position"
-						render={({ field }) => (
-							<FormItem>
-								<FormControl>
-									<Input placeholder="Position" {...field} />
-								</FormControl>
-							</FormItem>
-						)}
-					/>
-					<FormField
-						control={form.control}
-						name="date"
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel>Start Date</FormLabel>
-								<FormControl>
-									<DatePicker {...field} />
-								</FormControl>
-							</FormItem>
-						)}
-					/>
-					<FormField
-						control={form.control}
-						name="date"
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel>End Date</FormLabel>
-								<FormControl>
-									<DatePicker {...field} />
-								</FormControl>
-							</FormItem>
-						)}
-					/>
-				</div>
-				<div className="grid grid-cols-1 gap-4">
-					<FormField
-						control={form.control}
-						name="date"
-						render={({ field }) => (
-							<FormItem>
-								<FormControl>
-									<Textarea placeholder="Description" {...field} />
-								</FormControl>
-							</FormItem>
-						)}
-					/>
-				</div>
-				<div className="grid grid-cols-1 gap-4">
-					<Button
-						type="button"
-						variant="outline"
-						onClick={onRemoveExperienceHandler}
-					>
-						Remove
-					</Button>
-				</div>
+			<div className="grid grid-cols-2 gap-4 mb-6">
+				<FormField
+					control={form.control}
+					name="company"
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Company</FormLabel>
+							<FormControl>
+								<Input {...field} />
+							</FormControl>
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name="position"
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Position</FormLabel>
+							<FormControl>
+								<Input {...field} />
+							</FormControl>
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name="startdate"
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Start Date</FormLabel>
+							<FormControl>
+								<DatePicker {...field} />
+							</FormControl>
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name="enddate"
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>End Date</FormLabel>
+							<FormControl>
+								<DatePicker {...field} />
+							</FormControl>
+						</FormItem>
+					)}
+				/>
 			</div>
-			<Button type="submit" onClick={onAddExperienceHandler}>
-				Add Experience
-			</Button>
+			<div className="grid grid-cols-1 gap-4 mb-6">
+				<FormField
+					control={form.control}
+					name="description"
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Description</FormLabel>
+							<FormControl>
+								<Textarea {...field} />
+							</FormControl>
+						</FormItem>
+					)}
+				/>
+			</div>
+			<div className="flex justify-start gap-4">
+				<Button type="button" onClick={onAddExperienceHandler}>
+					Add experience
+				</Button>
+				<Button type="button" onClick={onRemoveExperienceHandler}>
+					Remove experience
+				</Button>
+			</div>
 		</>
 	);
 }
+
+export default ExperienceSegment;
