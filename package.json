@@ -42,10 +42,8 @@
         ],
         "rules": {
             "indent": [
-                [
-                    "error",
-                    4
-                ]
+                "error",
+                2
             ]
         }
     },
