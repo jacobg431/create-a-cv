@@ -3,23 +3,19 @@
 import { Button } from "@/components/ui/button";
 import { DatePicker } from "@/components/ui/datepicker";
 import { Input } from "@/components/ui/input";
-import {
-	FormControl,
-	FormField,
-	FormItem,
-	FormLabel,
-} from "@/components/ui/form";
+import { FormControl, FormItem, FormLabel } from "@/components/ui/form";
+import { Controller } from "react-hook-form";
+
+function onAddCertHandler() {
+	return;
+}
+
+function onRemoveCertHandler() {
+	return;
+}
 
 export function CertificationsSegment({ form }) {
-	const { register } = form; // Destructuring to extract register from form
-
-	function onAddCertHandler() {
-		// Logic to add a new certification
-	}
-
-	function onRemoveCertHandler() {
-		// Logic to remove a certification
-	}
+	const { control, register } = form;
 
 	return (
 		<>
@@ -40,13 +36,25 @@ export function CertificationsSegment({ form }) {
 				<FormItem>
 					<FormLabel>Date of issue</FormLabel>
 					<FormControl>
-						<DatePicker {...register("certificationsSegment.startDate")} />
+						<Controller
+							name="certificationsSegment.startDate"
+							control={control}
+							render={({ field: { onChange, onBlur, value } }) => (
+								<DatePicker value={value} onChange={onChange} onBlur={onBlur} />
+							)}
+						/>
 					</FormControl>
 				</FormItem>
 				<FormItem>
 					<FormLabel>Date of expiration</FormLabel>
 					<FormControl>
-						<DatePicker {...register("certificationsSegment.endDate")} />
+						<Controller
+							name="certificationsSegment.endDate"
+							control={control}
+							render={({ field: { onChange, onBlur, value } }) => (
+								<DatePicker value={value} onChange={onChange} onBlur={onBlur} />
+							)}
+						/>
 					</FormControl>
 				</FormItem>
 			</div>

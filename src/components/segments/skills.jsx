@@ -2,23 +2,18 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-	FormControl,
-	FormField,
-	FormItem,
-	FormLabel,
-} from "@/components/ui/form";
+import { FormControl, FormItem, FormLabel } from "@/components/ui/form";
+
+function onAddSkillHandler() {
+	return;
+}
+
+function onRemoveSkillHandler() {
+	return;
+}
 
 export function SkillsSegment({ form }) {
-	const { register } = form; // Destructuring to extract register from form
-
-	function onAddSkillHandler() {
-		// Logic to add a new skill
-	}
-
-	function onRemoveSkillHandler() {
-		// Logic to remove a skill
-	}
+	const { register } = form;
 
 	return (
 		<>

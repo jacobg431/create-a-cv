@@ -4,23 +4,19 @@ import { Button } from "@/components/ui/button";
 import { DatePicker } from "@/components/ui/datepicker";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-	FormControl,
-	FormField,
-	FormItem,
-	FormLabel,
-} from "@/components/ui/form";
+import { FormControl, FormItem, FormLabel } from "@/components/ui/form";
+import { Controller } from "react-hook-form";
+
+function onAddExperienceHandler() {
+	return;
+}
+
+function onRemoveExperienceHandler() {
+	return;
+}
 
 export function ExperienceSegment({ form }) {
-	const { register } = form; // Destructuring to extract register and control from form
-
-	function onAddExperienceHandler() {
-		// Logic to add experience
-	}
-
-	function onRemoveExperienceHandler() {
-		// Logic to remove experience
-	}
+	const { control, register } = form;
 
 	return (
 		<>
@@ -39,15 +35,27 @@ export function ExperienceSegment({ form }) {
 					</FormControl>
 				</FormItem>
 				<FormItem>
-					<FormLabel>Start Date</FormLabel>
+					<FormLabel>Start date</FormLabel>
 					<FormControl>
-						<DatePicker {...register("experienceSegment.startDate")} />
+						<Controller
+							name="experienceSegment.startDate"
+							control={control}
+							render={({ field: { onChange, onBlur, value } }) => (
+								<DatePicker value={value} onChange={onChange} onBlur={onBlur} />
+							)}
+						/>
 					</FormControl>
 				</FormItem>
 				<FormItem>
-					<FormLabel>End Date</FormLabel>
+					<FormLabel>End date</FormLabel>
 					<FormControl>
-						<DatePicker {...register("experienceSegment.endDate")} />
+						<Controller
+							name="experienceSegment.endDate"
+							control={control}
+							render={({ field: { onChange, onBlur, value } }) => (
+								<DatePicker value={value} onChange={onChange} onBlur={onBlur} />
+							)}
+						/>
 					</FormControl>
 				</FormItem>
 			</div>

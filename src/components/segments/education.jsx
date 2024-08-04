@@ -3,12 +3,8 @@
 import { Button } from "@/components/ui/button";
 import { DatePicker } from "@/components/ui/datepicker";
 import { Input } from "@/components/ui/input";
-import {
-	FormControl,
-	FormField,
-	FormItem,
-	FormLabel,
-} from "@/components/ui/form";
+import { FormControl, FormItem, FormLabel } from "@/components/ui/form";
+import { Controller } from "react-hook-form";
 
 function onAddEducationHandler() {
 	return;
@@ -19,7 +15,7 @@ function onRemoveEducationHandler() {
 }
 
 export function EducationSegment({ form }) {
-	const { register } = form; // Destructuring to extract register from form
+	const { control, register } = form;
 
 	return (
 		<>
@@ -40,13 +36,25 @@ export function EducationSegment({ form }) {
 				<FormItem>
 					<FormLabel>Enrollment date</FormLabel>
 					<FormControl>
-						<DatePicker {...register("educationSegment.startDate")} />
+						<Controller
+							name="educationSegment.startDate"
+							control={control}
+							render={({ field: { onChange, onBlur, value } }) => (
+								<DatePicker value={value} onChange={onChange} onBlur={onBlur} />
+							)}
+						/>
 					</FormControl>
 				</FormItem>
 				<FormItem>
 					<FormLabel>Graduation date</FormLabel>
 					<FormControl>
-						<DatePicker {...register("educationSegment.endDate")} />
+						<Controller
+							name="educationSegment.endDate"
+							control={control}
+							render={({ field: { onChange, onBlur, value } }) => (
+								<DatePicker value={value} onChange={onChange} onBlur={onBlur} />
+							)}
+						/>
 					</FormControl>
 				</FormItem>
 			</div>

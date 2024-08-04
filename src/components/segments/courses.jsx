@@ -3,12 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { DatePicker } from "@/components/ui/datepicker";
 import { Input } from "@/components/ui/input";
-import {
-	FormControl,
-	FormField,
-	FormItem,
-	FormLabel,
-} from "@/components/ui/form";
+import { FormControl, FormItem, FormLabel } from "@/components/ui/form";
 import {
 	Select,
 	SelectContent,
@@ -18,16 +13,16 @@ import {
 } from "@/components/ui/select";
 import { Controller } from "react-hook-form";
 
+function onAddCourseHandler() {
+	return;
+}
+
+function onRemoveCourseHandler() {
+	return;
+}
+
 export function CoursesSegment({ form }) {
 	const { register, control } = form;
-
-	function onAddCourseHandler() {
-		// Logic to add a new course
-	}
-
-	function onRemoveCourseHandler() {
-		// Logic to remove a course
-	}
 
 	return (
 		<>
@@ -36,22 +31,24 @@ export function CoursesSegment({ form }) {
 				<FormItem>
 					<FormLabel>Name</FormLabel>
 					<FormControl>
-						<Input {...register("coursesSegment.coursename")} />
+						<Input {...register("coursesSegment.name")} />
 					</FormControl>
 				</FormItem>
 				<FormItem>
 					<FormLabel>Instructor</FormLabel>
 					<FormControl>
-						<Input {...register("coursesSegment.courseinstructor")} />
+						<Input {...register("coursesSegment.instructor")} />
 					</FormControl>
 				</FormItem>
 				<FormItem>
 					<FormLabel>Completion date</FormLabel>
 					<FormControl>
 						<Controller
+							name="coursesSegment.completionDate"
 							control={control}
-							name="coursesSegment.coursecompletiondate"
-							render={({ field }) => <DatePicker {...field} />}
+							render={({ field: { onChange, onBlur, value } }) => (
+								<DatePicker value={value} onChange={onChange} onBlur={onBlur} />
+							)}
 						/>
 					</FormControl>
 				</FormItem>
@@ -60,7 +57,7 @@ export function CoursesSegment({ form }) {
 					<FormControl>
 						<Controller
 							control={control}
-							name="coursesSegment.courseduration"
+							name="coursesSegment.duration"
 							render={({ field }) => (
 								<Select {...field}>
 									<SelectTrigger>

@@ -25,6 +25,7 @@ function CreateCvForm() {
 				city: "",
 				country: "",
 				summary: "",
+				profilePicture: {},
 			},
 			educationSegment: {
 				school: "",
@@ -49,8 +50,10 @@ function CreateCvForm() {
 				endDate: null,
 			},
 			coursesSegment: {
-				coursename: "",
-				courseinstructor: "",
+				name: "",
+				instructor: "",
+				completionDate: null,
+				duration: "",
 			},
 		},
 	});

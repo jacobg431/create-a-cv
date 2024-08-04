@@ -19,9 +19,10 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
+import { Controller } from "react-hook-form";
 
 export function PersonaliaSegment({ form }) {
-	const { register } = form;
+	const { control, register } = form;
 
 	return (
 		<>
@@ -54,7 +55,13 @@ export function PersonaliaSegment({ form }) {
 				<FormItem>
 					<FormLabel>Date of birth</FormLabel>
 					<FormControl>
-						<DatePicker {...register("personaliaSegment.dateOfBirth")} />
+						<Controller
+							name="personaliaSegment.dateOfBirth"
+							control={control}
+							render={({ field: { onChange, onBlur, value } }) => (
+								<DatePicker value={value} onChange={onChange} onBlur={onBlur} />
+							)}
+						/>
 					</FormControl>
 				</FormItem>
 				<FormItem>
