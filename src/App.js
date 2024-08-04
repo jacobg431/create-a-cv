@@ -1,8 +1,6 @@
-import "@/assets/global.css";
-import CreateCvForm from "@/pages/CreateCvForm";
+import '@/assets/global.css';
+import { CreateCvForm } from '@/pages/CreateCvForm';
 
-function App() {
-	return <CreateCvForm />;
+export function App() {
+    return <CreateCvForm />;
 }
-
-export default App;
