@@ -1,86 +1,71 @@
-"use client"
+'use client';
 
-import { Button } from "@/components/ui/button"
-import { DatePicker } from "@/components/ui/datepicker"
-import { Input } from "@/components/ui/input"
-import {
-    Form,
-    FormControl,
-    FormDescription,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "@/components/ui/form"
+import { Button } from '@/components/ui/button';
+import { DatePicker } from '@/components/ui/datepicker';
+import { Input } from '@/components/ui/input';
+import { FormControl, FormItem, FormLabel } from '@/components/ui/form';
+import { Controller } from 'react-hook-form';
+
+function onAddEducationHandler() {
+    return;
+}
+
+function onRemoveEducationHandler() {
+    return;
+}
 
 export function EducationSegment({ form }) {
-
-    function onAddEducationHandler() {
-        return
-    }
-
-    function onRemoveEducationHandler() {
-        return
-    }
+    const { control, register } = form;
 
     return (
-        <>                            
+        <>
             <h1 className="text-xl font-bold mb-6">Education</h1>
-            <div>
-                <div className="grid grid-cols-2 gap-4">
-                    <FormField
-                        control={form.control}
-                        name="school"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormControl>
-                                    <Input placeholder="School" {...field} />
-                                </FormControl>
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="degree"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormControl>
-                                    <Input placeholder="Degree" {...field} />
-                                </FormControl>
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="edustartdate"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Enrollment Date</FormLabel>
-                                <FormControl>
-                                    <DatePicker {...field} />
-                                </FormControl>
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="eduenddate"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Graduation Date</FormLabel>
-                                <FormControl>
-                                    <DatePicker {...field} />
-                                </FormControl>
-                            </FormItem>
-                        )}
-                    />
-                </div>
-                <div className="grid grid-cols-1 gap-4">
-                    <Button type="button" variant="outline" onClick={onRemoveEducationHandler}>Remove</Button>
-                </div>
+            <div className="grid grid-cols-2 gap-4 mb-6">
+                <FormItem>
+                    <FormLabel>Name of the school</FormLabel>
+                    <FormControl>
+                        <Input {...register('educationSegment.school')} />
+                    </FormControl>
+                </FormItem>
+                <FormItem>
+                    <FormLabel>Degree</FormLabel>
+                    <FormControl>
+                        <Input {...register('educationSegment.degree')} />
+                    </FormControl>
+                </FormItem>
+                <FormItem>
+                    <FormLabel>Enrollment date</FormLabel>
+                    <FormControl>
+                        <Controller
+                            name="educationSegment.startDate"
+                            control={control}
+                            render={({ field: { onChange, onBlur, value } }) => (
+                                <DatePicker value={value} onChange={onChange} onBlur={onBlur} />
+                            )}
+                        />
+                    </FormControl>
+                </FormItem>
+                <FormItem>
+                    <FormLabel>Graduation date</FormLabel>
+                    <FormControl>
+                        <Controller
+                            name="educationSegment.endDate"
+                            control={control}
+                            render={({ field: { onChange, onBlur, value } }) => (
+                                <DatePicker value={value} onChange={onChange} onBlur={onBlur} />
+                            )}
+                        />
+                    </FormControl>
+                </FormItem>
             </div>
-            <Button type="button" onClick={onAddEducationHandler}>Add Education</Button>
+            <div className="flex justify-start gap-4">
+                <Button type="button" onClick={onAddEducationHandler}>
+                    Add education
+                </Button>
+                <Button type="button" onClick={onRemoveEducationHandler}>
+                    Remove education
+                </Button>
+            </div>
         </>
-    )
-
+    );
 }
