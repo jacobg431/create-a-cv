@@ -1,6 +1,11 @@
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup'
+import { validationSchema } from '@/utils/validationSchema'  
+import { isEmptyObject } from '@/utils/isEmptyObject'  
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
+import { Toaster } from '@/components/ui/sonner';
+import { toast } from 'sonner';
 import { CertificationsSegment } from '@/components/segments/certifications';
 import { CoursesSegment } from '@/components/segments/courses';
 import { EducationSegment } from '@/components/segments/education';
@@ -10,6 +15,7 @@ import { SkillsSegment } from '@/components/segments/skills';
 
 export function CreateCvForm() {
     const form = useForm({
+        resolver: yupResolver(validationSchema),
         defaultValues: {
             personaliaSegment: {
                 firstName: '',
@@ -24,7 +30,7 @@ export function CreateCvForm() {
                 city: '',
                 country: '',
                 summary: '',
-                profilePicture: {}
+                profilePicture: null
             },
             educationSegment: {
                 school: '',
@@ -61,6 +67,31 @@ export function CreateCvForm() {
         console.log('Form Values:', values);
     }
 
+    function onError(errors) {
+
+        const flattenErrors = (obj, path = '') =>
+            Object.entries(obj).reduce((accumulatedResult, [key, value]) => {
+                const currentPath = path ? `${path}.${key}` : key;
+                if (value == null) {
+                    return accumulatedResult;
+                }
+                if (value.message) {
+                    accumulatedResult.push(value.message);
+                    return accumulatedResult;
+                }
+                if (!isEmptyObject(value)) {
+                    accumulatedResult.push(...flattenErrors(value, currentPath));
+                }
+                return accumulatedResult;
+            }, []);
+
+        //const errorMessages = flattenErrors(errors).join(', ');
+        //console.log(errorMessages);
+        const firstErrorMessage = flattenErrors(errors)[0];
+        toast(firstErrorMessage);
+
+    }
+
     return (
         <>
             <nav />
@@ -69,7 +100,7 @@ export function CreateCvForm() {
                     <h1 className="text-3xl font-bold mb-4">Fill in the form</h1>
                     <h2 className="text-l mb-6">We'll take care of the rest.</h2>
                     <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="divide-y divide-gray-200">
+                        <form onSubmit={form.handleSubmit(onSubmit, onError)} className="divide-y divide-gray-200">
                             <div className="py-6 mb-12">
                                 <PersonaliaSegment form={form} />
                             </div>
@@ -96,6 +127,7 @@ export function CreateCvForm() {
                     </Form>
                 </div>
             </main>
+            <Toaster />
         </>
     );
 }
