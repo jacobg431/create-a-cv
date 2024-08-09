@@ -71,7 +71,7 @@ export function PersonaliaSegment({ form }) {
                                     value={value} 
                                     onChange={onChange} 
                                     onBlur={onBlur} 
-                                    className={errors.personaliaSegment?.dateOfBirth ? 'border-red-500' : ''} 
+                                    classNameButton={errors.personaliaSegment?.dateOfBirth ? 'border-red-500' : ''} 
                                 />
                             )}
                         />

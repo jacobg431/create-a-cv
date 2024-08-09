@@ -8,7 +8,7 @@ import { FormControl, FormItem, FormLabel } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Controller } from 'react-hook-form';
 
-function CourseInstance({ control, index, register, remove}) {
+function CourseInstance({ control, index, register, remove, errors}) {
 
     return (
 
@@ -17,13 +17,19 @@ function CourseInstance({ control, index, register, remove}) {
                 <FormItem>
                     <FormLabel>Name</FormLabel>
                     <FormControl>
-                        <Input {...register(`coursesSegment.${index}.name`)} />
+                        <Input 
+                            {...register(`coursesSegment.${index}.name`)} 
+                            className={errors.coursesSegment && errors.coursesSegment[index]?.name ? 'border-red-500' : ''}
+                        />
                     </FormControl>
                 </FormItem>
                 <FormItem>
                     <FormLabel>Instructor</FormLabel>
                     <FormControl>
-                        <Input {...register(`coursesSegment.${index}.instructor`)} />
+                        <Input 
+                            {...register(`coursesSegment.${index}.instructor`)} 
+                            className={errors.coursesSegment && errors.coursesSegment[index]?.instructor ? 'border-red-500' : ''}
+                        />
                     </FormControl>
                 </FormItem>
                 <FormItem>
@@ -33,7 +39,12 @@ function CourseInstance({ control, index, register, remove}) {
                             name={`coursesSegment.${index}.completionDate`}
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
-                                <DatePicker value={value} onChange={onChange} onBlur={onBlur} />
+                                <DatePicker 
+                                    value={value} 
+                                    onChange={onChange} 
+                                    onBlur={onBlur} 
+                                    classNameButton={errors.coursesSegment && errors.coursesSegment[index]?.startDate ? 'border-red-500' : ''}
+                                />
                             )}
                         />
                     </FormControl>
@@ -47,7 +58,9 @@ function CourseInstance({ control, index, register, remove}) {
                             control={control}
                             render={({ field: { onChange, value } }) => (
                                 <Select onValueChange={onChange}>
-                                    <SelectTrigger>
+                                    <SelectTrigger
+                                        className={errors.coursesSegment && errors.coursesSegment[index]?.duration ? 'border-red-500' : ''} 
+                                    >
                                         <SelectValue>{value ? value : 'Select duration'}</SelectValue>
                                     </SelectTrigger>
                                     <SelectContent>
@@ -71,7 +84,7 @@ function CourseInstance({ control, index, register, remove}) {
 
 export function CoursesSegment({ form }) {
 
-    const { register, control } = form;
+    const { register, control, formState: { errors } } = form;
     const { fields, append, remove } = useFieldArray({
         control,
         name: 'coursesSegment'
@@ -88,6 +101,7 @@ export function CoursesSegment({ form }) {
                     index={index}
                     register={register}
                     remove={remove}
+                    errors={errors}
                 />
             ))}
 

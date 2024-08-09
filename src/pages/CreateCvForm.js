@@ -90,6 +90,8 @@ export function CreateCvForm() {
             }, []);
 
         //const errorMessages = flattenErrors(errors).join(', ');
+        //console.log(errors)
+        //console.log(errorMessages);
         const firstErrorMessage = flattenErrors(errors)[0];
         toast(firstErrorMessage);
 

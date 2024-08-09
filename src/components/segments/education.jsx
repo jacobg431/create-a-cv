@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input';
 import { FormControl, FormItem, FormLabel } from '@/components/ui/form';
 import { Controller } from 'react-hook-form';
 
-function EducationInstance({ control, index, register, remove, watch}) {
+function EducationInstance({ control, index, register, remove, watch, errors}) {
 
     return (
 
@@ -17,13 +17,19 @@ function EducationInstance({ control, index, register, remove, watch}) {
                 <FormItem className='col-span-6'>
                     <FormLabel>Name of the school</FormLabel>
                     <FormControl>
-                        <Input {...register(`educationSegment.${index}.school`)} />
+                        <Input 
+                            {...register(`educationSegment.${index}.school`)}
+                            className={errors.educationSegment && errors.educationSegment[index]?.school ? 'border-red-500' : ''}    
+                        />
                     </FormControl>
                 </FormItem>
                 <FormItem className='col-span-6'>
                     <FormLabel>Degree</FormLabel>
                     <FormControl>
-                        <Input {...register(`educationSegment.${index}.degree`)} />
+                        <Input 
+                            {...register(`educationSegment.${index}.degree`)} 
+                            className={errors.educationSegment && errors.educationSegment[index]?.degree ? 'border-red-500' : ''}
+                        />
                     </FormControl>
                 </FormItem>
                 <FormItem className='col-span-3'>
@@ -33,7 +39,12 @@ function EducationInstance({ control, index, register, remove, watch}) {
                             name={`educationSegment.${index}.startDate`}
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
-                                <DatePicker value={value} onChange={onChange} onBlur={onBlur} />
+                                <DatePicker 
+                                    value={value} 
+                                    onChange={onChange} 
+                                    onBlur={onBlur} 
+                                    classNameButton={errors.educationSegment && errors.educationSegment[index]?.startDate ? 'border-red-500' : ''}
+                                />
                             )}
                         />
                     </FormControl>
@@ -45,7 +56,13 @@ function EducationInstance({ control, index, register, remove, watch}) {
                             name={`educationSegment.${index}.endDate`}
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
-                                <DatePicker disabled={watch(`educationSegment.${index}.isStudying`)} value={value} onChange={onChange} onBlur={onBlur} />
+                                <DatePicker 
+                                    disabled={watch(`educationSegment.${index}.isStudying`)} 
+                                    value={value} 
+                                    onChange={onChange} 
+                                    onBlur={onBlur}
+                                    classNameButton={errors.educationSegment && errors.educationSegment[index]?.endDate ? 'border-red-500' : ''} 
+                                />
                             )}
                         />
                     </FormControl>
@@ -77,7 +94,7 @@ function EducationInstance({ control, index, register, remove, watch}) {
 
 export function EducationSegment({ form }) {
 
-    const { control, register, watch } = form;
+    const { control, register, watch, formState: { errors } } = form;
     const { fields, append, remove } = useFieldArray({
         control,
         name: 'educationSegment' 
@@ -95,13 +112,15 @@ export function EducationSegment({ form }) {
                     register={register}
                     remove={remove}
                     watch={watch}
+                    errors={errors}
                 />
             ))}
 
             <div className='flex justify-start gap-4'>
-                <Button type='button' onClick={() => append({ school: '', degree: '', startDate: new Date(), endDate: new Date(), isStudying: false})}>
-                    Add education
-                </Button>
+                <Button 
+                    type='button' 
+                    onClick={() => append({ school: '', degree: '', startDate: new Date(), endDate: new Date(), isStudying: false})}
+                >Add education</Button>
             </div>
         </>
     );

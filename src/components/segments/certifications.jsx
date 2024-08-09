@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input';
 import { FormControl, FormItem, FormLabel } from '@/components/ui/form';
 import { Controller } from 'react-hook-form';
 
-function CertificationInstance({ control, index, register, remove, watch}) {
+function CertificationInstance({ control, index, register, remove, watch, errors}) {
 
     return (
 
@@ -17,13 +17,19 @@ function CertificationInstance({ control, index, register, remove, watch}) {
                 <FormItem className='col-span-6'>
                     <FormLabel>Certification name</FormLabel>
                     <FormControl>
-                        <Input {...register(`certificationsSegment.${index}.name`)} />
+                        <Input 
+                            {...register(`certificationsSegment.${index}.name`)}
+                            className={errors.certificationsSegment && errors.certificationsSegment[index]?.name ? 'border-red-500' : ''} 
+                        />
                     </FormControl>
                 </FormItem>
                 <FormItem className='col-span-6'>
                     <FormLabel>Issuer organization</FormLabel>
                     <FormControl>
-                        <Input {...register(`certificationsSegment.${index}.issuer`)} />
+                        <Input 
+                            {...register(`certificationsSegment.${index}.issuer`)}
+                            className={errors.certificationsSegment && errors.certificationsSegment[index]?.issuer ? 'border-red-500' : ''} 
+                        />
                     </FormControl>
                 </FormItem>
                 <FormItem className='col-span-3'>
@@ -33,7 +39,12 @@ function CertificationInstance({ control, index, register, remove, watch}) {
                             name={`certificationsSegment.${index}.startDate`}
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
-                                <DatePicker value={value} onChange={onChange} onBlur={onBlur} />
+                                <DatePicker 
+                                    value={value} 
+                                    onChange={onChange} 
+                                    onBlur={onBlur} 
+                                    classNameButton={errors.certificationsSegment && errors.certificationsSegment[index]?.startDate ? 'border-red-500' : ''} 
+                                />
                             )}
                         />
                     </FormControl>
@@ -45,7 +56,13 @@ function CertificationInstance({ control, index, register, remove, watch}) {
                             name={`certificationsSegment.${index}.endDate`}
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
-                                <DatePicker disabled={watch(`certificationsSegment.${index}.isExpriring`)} value={value} onChange={onChange} onBlur={onBlur} />
+                                <DatePicker 
+                                    disabled={watch(`certificationsSegment.${index}.isExpriring`)} 
+                                    value={value} 
+                                    onChange={onChange} 
+                                    onBlur={onBlur}
+                                    classNameButton={errors.certificationsSegment && errors.certificationsSegment[index]?.endDate ? 'border-red-500' : ''} 
+                                />
                             )}
                         />
                     </FormControl>
@@ -77,7 +94,7 @@ function CertificationInstance({ control, index, register, remove, watch}) {
 
 export function CertificationsSegment({ form }) {
 
-    const { control, register, watch } = form;
+    const { control, register, watch, formState: { errors } } = form;
     const { fields, append, remove} = useFieldArray({
         control,
         name: 'certificationsSegment'
@@ -95,6 +112,7 @@ export function CertificationsSegment({ form }) {
                     register={register}
                     remove={remove}
                     watch={watch}
+                    errors={errors}
                 />
             ))}
 

@@ -9,7 +9,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { FormControl, FormItem, FormLabel } from '@/components/ui/form';
 import { Controller } from 'react-hook-form';
 
-function ExperienceInstance({ control, index, register, remove, watch}) {
+function ExperienceInstance({ control, index, register, remove, watch, errors}) {
 
     return (
 
@@ -18,13 +18,19 @@ function ExperienceInstance({ control, index, register, remove, watch}) {
                 <FormItem className='col-span-6'>
                     <FormLabel>Company</FormLabel>
                     <FormControl>
-                        <Input {...register(`experienceSegment.${index}.company`)} />
+                        <Input 
+                            {...register(`experienceSegment.${index}.company`)} 
+                            className={errors.experienceSegment && errors.experienceSegment[index]?.company ? 'border-red-500' : ''} 
+                        />
                     </FormControl>
                 </FormItem>
                 <FormItem className='col-span-6'>
                     <FormLabel>Position</FormLabel>
                     <FormControl>
-                        <Input {...register(`experienceSegment.${index}.position`)} />
+                        <Input 
+                            {...register(`experienceSegment.${index}.position`)} 
+                            className={errors.experienceSegment && errors.experienceSegment[index]?.position ? 'border-red-500' : ''} 
+                        />
                     </FormControl>
                 </FormItem>
                 <FormItem className='col-span-3'>
@@ -34,7 +40,12 @@ function ExperienceInstance({ control, index, register, remove, watch}) {
                             name={`experienceSegment.${index}.startDate`}
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
-                                <DatePicker value={value} onChange={onChange} onBlur={onBlur} />
+                                <DatePicker 
+                                    value={value} 
+                                    onChange={onChange} 
+                                    onBlur={onBlur}
+                                    classNameButton={errors.experienceSegment && errors.experienceSegment[index]?.startDate ? 'border-red-500' : ''} 
+                                />
                             )}
                         />
                     </FormControl>
@@ -46,7 +57,13 @@ function ExperienceInstance({ control, index, register, remove, watch}) {
                             name={`experienceSegment.${index}.endDate`}
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
-                                <DatePicker disabled={watch(`experienceSegment.${index}.isWorking`)} value={value} onChange={onChange} onBlur={onBlur} />
+                                <DatePicker 
+                                    disabled={watch(`experienceSegment.${index}.isWorking`)} 
+                                    value={value} 
+                                    onChange={onChange} 
+                                    onBlur={onBlur} 
+                                    classNameButton={errors.experienceSegment && errors.experienceSegment[index]?.endDate ? 'border-red-500' : ''} 
+                                />
                             )}
                         />
                     </FormControl>
@@ -68,7 +85,10 @@ function ExperienceInstance({ control, index, register, remove, watch}) {
                 <FormItem>
                     <FormLabel>Description</FormLabel>
                     <FormControl>
-                        <Textarea {...register(`experienceSegment.${index}.description`)} />
+                        <Textarea 
+                            {...register(`experienceSegment.${index}.description`)} 
+                            className={errors.experienceSegment && errors.experienceSegment[index]?.description ? 'border-red-500' : ''}     
+                        />
                     </FormControl>
                 </FormItem>
                 <Button 
@@ -85,7 +105,7 @@ function ExperienceInstance({ control, index, register, remove, watch}) {
 
 export function ExperienceSegment({ form }) {
 
-    const { control, register, watch } = form;
+    const { control, register, watch, formState: { errors } } = form;
     const { fields, append, remove } = useFieldArray({
         control,
         name: 'experienceSegment'
@@ -104,6 +124,7 @@ export function ExperienceSegment({ form }) {
                     register={register}
                     remove={remove}
                     watch={watch}
+                    errors={errors}
                 />
 
             ))}
