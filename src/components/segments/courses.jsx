@@ -13,7 +13,7 @@ function CourseInstance({ control, index, register, remove}) {
     return (
 
         <>
-            <div className="grid grid-cols-2 gap-4 mb-6">
+            <div className='grid grid-cols-2 gap-4 mb-6'>
                 <FormItem>
                     <FormLabel>Name</FormLabel>
                     <FormControl>
@@ -51,17 +51,17 @@ function CourseInstance({ control, index, register, remove}) {
                                         <SelectValue>{value ? value : 'Select duration'}</SelectValue>
                                     </SelectTrigger>
                                     <SelectContent>
-                                        <SelectItem value="Hours">Hours</SelectItem>
-                                        <SelectItem value="Days">Days</SelectItem>
-                                        <SelectItem value="Weeks">Weeks</SelectItem>
-                                        <SelectItem value="Months">Months</SelectItem>
+                                        <SelectItem value='Hours'>Hours</SelectItem>
+                                        <SelectItem value='Days'>Days</SelectItem>
+                                        <SelectItem value='Weeks'>Weeks</SelectItem>
+                                        <SelectItem value='Months'>Months</SelectItem>
                                     </SelectContent>
                                 </Select>
                             )}
                         />
                     </FormControl>
                 </FormItem>
-                <Button type="button" variant="outline" onClick={() => remove(index)}>Remove course</Button>
+                <Button type='button' variant='outline' onClick={() => remove(index)}>Remove course</Button>
             </div>
         </>
 
@@ -79,7 +79,7 @@ export function CoursesSegment({ form }) {
 
     return (
         <>
-            <h1 className="text-xl font-bold mb-6">Courses</h1>
+            <h1 className='text-xl font-bold mb-6'>Courses</h1>
 
             {fields.map((field, index) => (
                 <CourseInstance 
@@ -91,8 +91,8 @@ export function CoursesSegment({ form }) {
                 />
             ))}
 
-            <div className="flex justify-start gap-4">
-                <Button type="button" onClick={() => append({ name: '', instructor: '', completionDate: new Date(), duration: '' })}>
+            <div className='flex justify-start gap-4'>
+                <Button type='button' onClick={() => append({ name: '', instructor: '', completionDate: new Date(), duration: '' })}>
                     Add course
                 </Button>
             </div>

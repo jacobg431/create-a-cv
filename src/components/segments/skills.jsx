@@ -23,7 +23,7 @@ function SkillInstance({index, remove, value}) {
 
     return (
         <>
-            <Button type="button" variant="outline" onClick={() => remove(index)}>
+            <Button type='button' variant='outline' onClick={() => remove(index)}>
                 {value}
             </Button>
         </>
@@ -42,12 +42,12 @@ export function SkillsSegment({ form }) {
 
     return (
         <>
-            <h1 className="text-xl font-bold mb-6">Skills</h1>
-            <div className="grid grid-cols-1 gap-4 mb-6">
+            <h1 className='text-xl font-bold mb-6'>Skills</h1>
+            <div className='grid grid-cols-1 gap-4 mb-6'>
                 <FormItem>
                     <FormLabel>Skill</FormLabel>
-                    <FormControl className="flex items-center">
-                        <Input {...register('skillsSegment.input')} className="flex-grow" />
+                    <FormControl className='flex items-center'>
+                        <Input {...register('skillsSegment.input')} className='flex-grow' />
                     </FormControl>
                 </FormItem>
             </div>
@@ -61,8 +61,8 @@ export function SkillsSegment({ form }) {
                     />
                 ))}
             </div>
-            <div className="flex justify-start gap-4">
-                <Button type="button" onClick={() => AppendSkill(fields, getValues('skillsSegment.input'), append)}>
+            <div className='flex justify-start gap-4'>
+                <Button type='button' onClick={() => AppendSkill(fields, getValues('skillsSegment.input'), append)}>
                     Add skill
                 </Button>
             </div>

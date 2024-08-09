@@ -22,8 +22,8 @@ export function PersonaliaSegment({ form }) {
 
     return (
         <>
-            <h1 className="text-xl font-bold mb-6">Personalia</h1>
-            <div className="grid grid-cols-2 gap-4 mb-6">
+            <h1 className='text-xl font-bold mb-6'>Personalia</h1>
+            <div className='grid grid-cols-2 gap-4 mb-6'>
                 <FormItem>
                     <FormLabel>First name</FormLabel>
                     <FormControl>
@@ -64,7 +64,7 @@ export function PersonaliaSegment({ form }) {
                     <FormLabel>Date of birth</FormLabel>
                     <FormControl>
                         <Controller
-                            name="personaliaSegment.dateOfBirth"
+                            name='personaliaSegment.dateOfBirth'
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
                                 <DatePicker 
@@ -81,7 +81,7 @@ export function PersonaliaSegment({ form }) {
                     <FormLabel>Gender</FormLabel>
                     <FormControl>
                         <Controller
-                            name="personaliaSegment.gender"
+                            name='personaliaSegment.gender'
                             control={control}
                             render={({ field: { onChange, value } }) => (
                                 <Select 
@@ -93,8 +93,8 @@ export function PersonaliaSegment({ form }) {
                                         <SelectValue>{value ? value : 'Select gender'}</SelectValue>
                                     </SelectTrigger>
                                     <SelectContent>
-                                        <SelectItem value="Female">Female</SelectItem>
-                                        <SelectItem value="Male">Male</SelectItem>
+                                        <SelectItem value='Female'>Female</SelectItem>
+                                        <SelectItem value='Male'>Male</SelectItem>
                                     </SelectContent>
                                 </Select>
                             )}
@@ -147,7 +147,7 @@ export function PersonaliaSegment({ form }) {
             <div>
                 <Dialog>
                     <DialogTrigger asChild>
-                        <Button variant="outline">Upload Profile Picture</Button>
+                        <Button variant='outline'>Upload Profile Picture</Button>
                     </DialogTrigger>
                     <DialogContent>
                         <DialogHeader>
@@ -157,12 +157,12 @@ export function PersonaliaSegment({ form }) {
                             </DialogDescription>
                         </DialogHeader>
                         <Input 
-                            type="file" 
+                            type='file' 
                             {...register('personaliaSegment.profilePicture')} 
                             className={errors.personaliaSegment?.profilePicture ? 'border-red-500' : ''}
                         />
                         <DialogClose asChild>
-                            <Button type="button">Confirm</Button>
+                            <Button type='button'>Confirm</Button>
                         </DialogClose>
                     </DialogContent>
                 </Dialog>

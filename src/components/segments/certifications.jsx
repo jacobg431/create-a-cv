@@ -2,30 +2,31 @@
 
 import { useFieldArray } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox'
 import { DatePicker } from '@/components/ui/datepicker';
 import { Input } from '@/components/ui/input';
 import { FormControl, FormItem, FormLabel } from '@/components/ui/form';
 import { Controller } from 'react-hook-form';
 
-function CertificationInstance({ control, index, register, remove}) {
+function CertificationInstance({ control, index, register, remove, watch}) {
 
     return (
 
         <>
-            <div className="grid grid-cols-2 gap-4 mb-6">
-                <FormItem>
+            <div className='grid grid-cols-12 gap-4 mb-6'>
+                <FormItem className='col-span-6'>
                     <FormLabel>Certification name</FormLabel>
                     <FormControl>
                         <Input {...register(`certificationsSegment.${index}.name`)} />
                     </FormControl>
                 </FormItem>
-                <FormItem>
+                <FormItem className='col-span-6'>
                     <FormLabel>Issuer organization</FormLabel>
                     <FormControl>
                         <Input {...register(`certificationsSegment.${index}.issuer`)} />
                     </FormControl>
                 </FormItem>
-                <FormItem>
+                <FormItem className='col-span-3'>
                     <FormLabel>Date of issue</FormLabel>
                     <FormControl>
                         <Controller
@@ -37,19 +38,36 @@ function CertificationInstance({ control, index, register, remove}) {
                         />
                     </FormControl>
                 </FormItem>
-                <FormItem>
+                <FormItem className='col-span-3'>
                     <FormLabel>Date of expiration</FormLabel>
                     <FormControl>
                         <Controller
                             name={`certificationsSegment.${index}.endDate`}
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
-                                <DatePicker value={value} onChange={onChange} onBlur={onBlur} />
+                                <DatePicker disabled={watch(`certificationsSegment.${index}.isExpriring`)} value={value} onChange={onChange} onBlur={onBlur} />
                             )}
                         />
                     </FormControl>
                 </FormItem>
-                <Button type="button" variant="outline" onClick={() => remove(index)}>Remove certification</Button>
+                <FormItem className='flex flex-row flex-start items-center gap-4 col-span-6'>
+                    <FormControl>
+                        <Controller 
+                            name={`certificationsSegment.${index}.isExpriring`}
+                            control={control}
+                            render={({ field: { onChange, onBlur, value } }) => (
+                                <Checkbox checked={value} onCheckedChange={onChange} onBlur={onBlur} />
+                            )}
+                        />
+                    </FormControl>
+                    <FormLabel style={{margin: 0}}>No expiration date</FormLabel>
+                </FormItem>
+                <Button
+                    className='col-span-6' 
+                    type='button' 
+                    variant='outline' 
+                    onClick={() => remove(index)}
+                >Remove certification</Button>
             </div>
         </>
 
@@ -59,7 +77,7 @@ function CertificationInstance({ control, index, register, remove}) {
 
 export function CertificationsSegment({ form }) {
 
-    const { control, register } = form;
+    const { control, register, watch } = form;
     const { fields, append, remove} = useFieldArray({
         control,
         name: 'certificationsSegment'
@@ -67,7 +85,7 @@ export function CertificationsSegment({ form }) {
 
     return (
         <>
-            <h1 className="text-xl font-bold mb-6">Certifications</h1>
+            <h1 className='text-xl font-bold mb-6'>Certifications</h1>
 
             {fields.map((field, index) => (
                 <CertificationInstance 
@@ -76,11 +94,12 @@ export function CertificationsSegment({ form }) {
                     index={index}
                     register={register}
                     remove={remove}
+                    watch={watch}
                 />
             ))}
 
-            <div className="flex justify-start gap-4">
-                <Button type="button" onClick={() => append({ name: '', issuer: '', startDate: new Date(), endDate: new Date() })}>
+            <div className='flex justify-start gap-4'>
+                <Button type='button' onClick={() => append({ name: '', issuer: '', startDate: new Date(), endDate: new Date() })}>
                     Add certification
                 </Button>
             </div>

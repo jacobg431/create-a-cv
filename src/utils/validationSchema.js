@@ -4,7 +4,7 @@ const MAX_FILE_SIZE = 4_194_304
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const validFileExtensions = { image: ['jpg', 'gif', 'png', 'jpeg', 'svg', 'webp'] };
 
-function isValidFileType(fileName, fileType) {
+function IsValidFileType(fileName, fileType) {
     return fileName && validFileExtensions[fileType].indexOf(fileName.split('.').pop()) > -1;
 }
 
@@ -32,7 +32,7 @@ export const validationSchema = yup.object().shape({
             .mixed()
             .nullable()
             //.required('Profile picture is required')
-            .test('is-valid-type', 'Not a valid image file type', value => isValidFileType(value.name, 'image'))
+            .test('is-valid-type', 'Not a valid image file type', value => IsValidFileType(value.name, 'image'))
             .test('is-valid-size', 'Uploaded image exceeds max limit of 4 MB', value => value && value.size <= MAX_FILE_SIZE)
     }),
     
@@ -41,7 +41,8 @@ export const validationSchema = yup.object().shape({
             school: yup.string().required('School name is required'),
             //degree: yup.string().required('Degree is required'),
             startDate: yup.date().required('Education start date is required'),
-            endDate: yup.date().nullable()
+            endDate: yup.date().nullable(),
+            isStudying: yup.boolean()
         })
     ),
     
@@ -50,7 +51,9 @@ export const validationSchema = yup.object().shape({
             company: yup.string().required('Company is required'),
             position: yup.string().required('Position is required'),
             startDate: yup.date().required('Experience start date is required'),
-            endDate: yup.date().nullable()
+            endDate: yup.date().nullable(),
+            isWorking: yup.boolean(),
+            description: yup.string().nullable()
         })
     ),
 
@@ -63,7 +66,8 @@ export const validationSchema = yup.object().shape({
             name: yup.string().required('Course name is required'),
             issuer: yup.string().required('Issuer organization is required'),
             startDate: yup.date().required('Certification issue date is required'),
-            endDate: yup.date().nullable()
+            endDate: yup.date().nullable(),
+            isExpiring: yup.boolean
         })
     ),
 
