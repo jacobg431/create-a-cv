@@ -153,7 +153,7 @@ export function PersonaliaSegment({ form }) {
                         <DialogHeader>
                             <DialogTitle>Upload Profile Picture</DialogTitle>
                             <DialogDescription>
-                                The image file to upload must be in JPG/PNG format and must not exceed a size of 8 MB.
+                                The image file to upload must be in JPG/PNG format and must not exceed a size of 4 MB.
                             </DialogDescription>
                         </DialogHeader>
                         <Input 
