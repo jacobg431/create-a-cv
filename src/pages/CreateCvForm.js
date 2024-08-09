@@ -22,7 +22,7 @@ export function CreateCvForm() {
                 lastName: '',
                 email: '',
                 phone: '',
-                dateOfBirth: null,
+                dateOfBirth: new Date(),
                 gender: '',
                 address: '',
                 address2: '',
@@ -32,34 +32,35 @@ export function CreateCvForm() {
                 summary: '',
                 profilePicture: null
             },
-            educationSegment: {
+            educationSegment: [{ 
                 school: '',
                 degree: '',
-                startDate: null,
-                endDate: null
-            },
-            experienceSegment: {
+                startDate: new Date(),
+                endDate: new Date()
+            }],
+            experienceSegment: [{
                 company: '',
                 position: '',
-                startDate: null,
-                endDate: null,
+                startDate: new Date(),
+                endDate: new Date(),
                 description: ''
-            },
+            }],
             skillsSegment: {
-                skills: ''
+                input: '',
+                skills: []
             },
-            certificationsSegment: {
+            certificationsSegment: [{
                 name: '',
                 issuer: '',
-                startDate: null,
-                endDate: null
-            },
-            coursesSegment: {
+                startDate:  new Date(),
+                endDate:  new Date()
+            }],
+            coursesSegment: [{
                 name: '',
                 instructor: '',
-                completionDate: null,
+                completionDate:  new Date(),
                 duration: ''
-            }
+            }]
         }
     });
 
@@ -86,7 +87,6 @@ export function CreateCvForm() {
             }, []);
 
         //const errorMessages = flattenErrors(errors).join(', ');
-        //console.log(errorMessages);
         const firstErrorMessage = flattenErrors(errors)[0];
         toast(firstErrorMessage);
 

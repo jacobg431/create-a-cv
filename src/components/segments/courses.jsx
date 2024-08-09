@@ -1,5 +1,6 @@
 'use client';
 
+import { useFieldArray } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
 import { DatePicker } from '@/components/ui/datepicker';
 import { Input } from '@/components/ui/input';
@@ -7,38 +8,29 @@ import { FormControl, FormItem, FormLabel } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Controller } from 'react-hook-form';
 
-function onAddCourseHandler() {
-    return;
-}
-
-function onRemoveCourseHandler() {
-    return;
-}
-
-export function CoursesSegment({ form }) {
-    const { register, control } = form;
+function CourseInstance({ control, index, register, remove}) {
 
     return (
+
         <>
-            <h1 className="text-xl font-bold mb-6">Courses</h1>
             <div className="grid grid-cols-2 gap-4 mb-6">
                 <FormItem>
                     <FormLabel>Name</FormLabel>
                     <FormControl>
-                        <Input {...register('coursesSegment.name')} />
+                        <Input {...register(`coursesSegment.${index}.name`)} />
                     </FormControl>
                 </FormItem>
                 <FormItem>
                     <FormLabel>Instructor</FormLabel>
                     <FormControl>
-                        <Input {...register('coursesSegment.instructor')} />
+                        <Input {...register(`coursesSegment.${index}.instructor`)} />
                     </FormControl>
                 </FormItem>
                 <FormItem>
                     <FormLabel>Completion date</FormLabel>
                     <FormControl>
                         <Controller
-                            name="coursesSegment.completionDate"
+                            name={`coursesSegment.${index}.completionDate`}
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
                                 <DatePicker value={value} onChange={onChange} onBlur={onBlur} />
@@ -51,7 +43,7 @@ export function CoursesSegment({ form }) {
                     <FormLabel>Duration</FormLabel>
                     <FormControl>
                         <Controller
-                            name="coursesSegment.duration"
+                            name={`coursesSegment.${index}.duration`}
                             control={control}
                             render={({ field: { onChange, value } }) => (
                                 <Select onValueChange={onChange}>
@@ -69,15 +61,42 @@ export function CoursesSegment({ form }) {
                         />
                     </FormControl>
                 </FormItem>
+                <Button type="button" variant="outline" onClick={() => remove(index)}>Remove course</Button>
             </div>
+        </>
+
+    );
+
+}
+
+export function CoursesSegment({ form }) {
+
+    const { register, control } = form;
+    const { fields, append, remove } = useFieldArray({
+        control,
+        name: 'coursesSegment'
+    });
+
+    return (
+        <>
+            <h1 className="text-xl font-bold mb-6">Courses</h1>
+
+            {fields.map((field, index) => (
+                <CourseInstance 
+                    key={field.id}
+                    control={control}
+                    index={index}
+                    register={register}
+                    remove={remove}
+                />
+            ))}
+
             <div className="flex justify-start gap-4">
-                <Button type="button" onClick={onAddCourseHandler}>
+                <Button type="button" onClick={() => append({ name: '', instructor: '', completionDate: new Date(), duration: '' })}>
                     Add course
-                </Button>
-                <Button type="button" onClick={onRemoveCourseHandler}>
-                    Remove course
                 </Button>
             </div>
         </>
     );
+    
 }

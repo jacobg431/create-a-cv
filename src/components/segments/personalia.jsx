@@ -159,7 +159,7 @@ export function PersonaliaSegment({ form }) {
                         <Input 
                             type="file" 
                             {...register('personaliaSegment.profilePicture')} 
-                            className={errors.personaliaSegment?.country ? 'border-red-500' : ''}
+                            className={errors.personaliaSegment?.profilePicture ? 'border-red-500' : ''}
                         />
                         <DialogClose asChild>
                             <Button type="button">Confirm</Button>
