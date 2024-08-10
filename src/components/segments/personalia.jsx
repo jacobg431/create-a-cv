@@ -29,7 +29,7 @@ export function PersonaliaSegment({ form }) {
                     <FormControl>
                         <Input 
                             {...register('personaliaSegment.firstName')} 
-                            className={errors.personaliaSegment?.firstName ? 'border-red-500' : ''} 
+                            className={errors.personaliaSegment?.firstName ? 'validation-error-outline' : ''} 
                         />
                     </FormControl>
                 </FormItem>
@@ -38,7 +38,7 @@ export function PersonaliaSegment({ form }) {
                     <FormControl>
                         <Input 
                             {...register('personaliaSegment.lastName')}
-                            className={errors.personaliaSegment?.lastName ? 'border-red-500' : ''}
+                            className={errors.personaliaSegment?.lastName ? 'validation-error-outline' : ''}
                         />
                     </FormControl>
                 </FormItem>
@@ -47,7 +47,7 @@ export function PersonaliaSegment({ form }) {
                     <FormControl>
                         <Input 
                             {...register('personaliaSegment.email')} 
-                            className={errors.personaliaSegment?.email ? 'border-red-500' : ''} 
+                            className={errors.personaliaSegment?.email ? 'validation-error-outline' : ''} 
                         />
                     </FormControl>
                 </FormItem>
@@ -56,7 +56,7 @@ export function PersonaliaSegment({ form }) {
                     <FormControl>
                         <Input 
                             {...register('personaliaSegment.phone')} 
-                            className={errors.personaliaSegment?.phone ? 'border-red-500' : ''} 
+                            className={errors.personaliaSegment?.phone ? 'validation-error-outline' : ''} 
                         />
                     </FormControl>
                 </FormItem>
@@ -71,7 +71,7 @@ export function PersonaliaSegment({ form }) {
                                     value={value} 
                                     onChange={onChange} 
                                     onBlur={onBlur} 
-                                    classNameButton={errors.personaliaSegment?.dateOfBirth ? 'border-red-500' : ''} 
+                                    classNameButton={errors.personaliaSegment?.dateOfBirth ? 'validation-error-outline' : ''} 
                                 />
                             )}
                         />
@@ -88,7 +88,7 @@ export function PersonaliaSegment({ form }) {
                                     onValueChange={onChange} 
                                 >
                                     <SelectTrigger 
-                                        className={errors.personaliaSegment?.gender ? 'border-red-500' : ''} 
+                                        className={errors.personaliaSegment?.gender ? 'validation-error-outline' : ''} 
                                     >
                                         <SelectValue>{value ? value : 'Select gender'}</SelectValue>
                                     </SelectTrigger>
@@ -106,7 +106,7 @@ export function PersonaliaSegment({ form }) {
                     <FormControl>
                         <Input 
                             {...register('personaliaSegment.address')} 
-                            className={errors.personaliaSegment?.address ? 'border-red-500' : ''}
+                            className={errors.personaliaSegment?.address ? 'validation-error-outline' : ''}
                         />
                     </FormControl>
                 </FormItem>
@@ -121,7 +121,7 @@ export function PersonaliaSegment({ form }) {
                     <FormControl>
                         <Input 
                             {...register('personaliaSegment.zipCode')} 
-                            className={errors.personaliaSegment?.zipCode ? 'border-red-500' : ''}
+                            className={errors.personaliaSegment?.zipCode ? 'validation-error-outline' : ''}
                         />
                     </FormControl>
                 </FormItem>
@@ -130,7 +130,7 @@ export function PersonaliaSegment({ form }) {
                     <FormControl>
                         <Input 
                             {...register('personaliaSegment.city')} 
-                            className={errors.personaliaSegment?.city ? 'border-red-500' : ''}
+                            className={errors.personaliaSegment?.city ? 'validation-error-outline' : ''}
                         />
                     </FormControl>
                 </FormItem>
@@ -139,7 +139,7 @@ export function PersonaliaSegment({ form }) {
                     <FormControl>
                         <Input 
                             {...register('personaliaSegment.country')} 
-                            className={errors.personaliaSegment?.country ? 'border-red-500' : ''}
+                            className={errors.personaliaSegment?.country ? 'validation-error-outline' : ''}
                         />
                     </FormControl>
                 </FormItem>
@@ -159,7 +159,7 @@ export function PersonaliaSegment({ form }) {
                         <Input 
                             type='file' 
                             {...register('personaliaSegment.profilePicture')} 
-                            className={errors.personaliaSegment?.profilePicture ? 'border-red-500' : ''}
+                            className={errors.personaliaSegment?.profilePicture ? 'validation-error-outline' : ''}
                         />
                         <DialogClose asChild>
                             <Button type='button'>Confirm</Button>
@@ -171,7 +171,7 @@ export function PersonaliaSegment({ form }) {
                     <FormControl>
                         <Textarea 
                             {...register('personaliaSegment.summary')} 
-                            className={errors.personaliaSegment?.summary ? 'border-red-500' : ''}
+                            className={errors.personaliaSegment?.summary ? 'validation-error-outline' : ''}
                         />
                     </FormControl>
                 </FormItem>

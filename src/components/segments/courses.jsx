@@ -19,7 +19,7 @@ function CourseInstance({ control, index, register, remove, errors}) {
                     <FormControl>
                         <Input 
                             {...register(`coursesSegment.${index}.name`)} 
-                            className={errors.coursesSegment && errors.coursesSegment[index]?.name ? 'border-red-500' : ''}
+                            className={errors.coursesSegment && errors.coursesSegment[index]?.name ? 'validation-error-outline' : ''}
                         />
                     </FormControl>
                 </FormItem>
@@ -28,7 +28,7 @@ function CourseInstance({ control, index, register, remove, errors}) {
                     <FormControl>
                         <Input 
                             {...register(`coursesSegment.${index}.instructor`)} 
-                            className={errors.coursesSegment && errors.coursesSegment[index]?.instructor ? 'border-red-500' : ''}
+                            className={errors.coursesSegment && errors.coursesSegment[index]?.instructor ? 'validation-error-outline' : ''}
                         />
                     </FormControl>
                 </FormItem>
@@ -43,7 +43,7 @@ function CourseInstance({ control, index, register, remove, errors}) {
                                     value={value} 
                                     onChange={onChange} 
                                     onBlur={onBlur} 
-                                    classNameButton={errors.coursesSegment && errors.coursesSegment[index]?.startDate ? 'border-red-500' : ''}
+                                    classNameButton={errors.coursesSegment && errors.coursesSegment[index]?.startDate ? 'validation-error-outline' : ''}
                                 />
                             )}
                         />
@@ -58,7 +58,7 @@ function CourseInstance({ control, index, register, remove, errors}) {
                             render={({ field: { onChange, value } }) => (
                                 <Select onValueChange={onChange}>
                                     <SelectTrigger
-                                        className={errors.coursesSegment && errors.coursesSegment[index]?.duration ? 'border-red-500' : ''} 
+                                        className={errors.coursesSegment && errors.coursesSegment[index]?.duration ? 'validation-error-outline' : ''} 
                                     >
                                         <SelectValue>{value ? value : 'Select duration'}</SelectValue>
                                     </SelectTrigger>

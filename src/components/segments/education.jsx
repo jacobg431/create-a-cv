@@ -19,7 +19,7 @@ function EducationInstance({ control, index, register, remove, watch, errors}) {
                     <FormControl>
                         <Input 
                             {...register(`educationSegment.${index}.school`)}
-                            className={errors.educationSegment && errors.educationSegment[index]?.school ? 'border-red-500' : ''}    
+                            className={errors.educationSegment && errors.educationSegment[index]?.school ? 'validation-error-outline' : ''}    
                         />
                     </FormControl>
                 </FormItem>
@@ -28,7 +28,7 @@ function EducationInstance({ control, index, register, remove, watch, errors}) {
                     <FormControl>
                         <Input 
                             {...register(`educationSegment.${index}.degree`)} 
-                            className={errors.educationSegment && errors.educationSegment[index]?.degree ? 'border-red-500' : ''}
+                            className={errors.educationSegment && errors.educationSegment[index]?.degree ? 'validation-error-outline' : ''}
                         />
                     </FormControl>
                 </FormItem>
@@ -43,7 +43,7 @@ function EducationInstance({ control, index, register, remove, watch, errors}) {
                                     value={value} 
                                     onChange={onChange} 
                                     onBlur={onBlur} 
-                                    classNameButton={errors.educationSegment && errors.educationSegment[index]?.startDate ? 'border-red-500' : ''}
+                                    classNameButton={errors.educationSegment && errors.educationSegment[index]?.startDate ? 'validation-error-outline' : ''}
                                 />
                             )}
                         />
@@ -61,7 +61,7 @@ function EducationInstance({ control, index, register, remove, watch, errors}) {
                                     value={value} 
                                     onChange={onChange} 
                                     onBlur={onBlur}
-                                    classNameButton={errors.educationSegment && errors.educationSegment[index]?.endDate ? 'border-red-500' : ''} 
+                                    classNameButton={errors.educationSegment && errors.educationSegment[index]?.endDate ? 'validation-error-outline' : ''} 
                                 />
                             )}
                         />
