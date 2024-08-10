@@ -144,7 +144,7 @@ export function PersonaliaSegment({ form }) {
                     </FormControl>
                 </FormItem>
             </div>
-            <div>
+            <div className='grid grid-cols-2 gap-4 mb-6'>
                 <Dialog>
                     <DialogTrigger asChild>
                         <Button variant='outline'>Upload Profile Picture</Button>
@@ -166,7 +166,7 @@ export function PersonaliaSegment({ form }) {
                         </DialogClose>
                     </DialogContent>
                 </Dialog>
-                <FormItem>
+                <FormItem className='col-span-2'>
                     <FormLabel>Summary</FormLabel>
                     <FormControl>
                         <Textarea 
