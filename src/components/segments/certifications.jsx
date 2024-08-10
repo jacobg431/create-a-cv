@@ -57,7 +57,7 @@ function CertificationInstance({ control, index, register, remove, watch, errors
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
                                 <DatePicker 
-                                    disabled={watch(`certificationsSegment.${index}.isExpriring`)} 
+                                    disabled={watch(`certificationsSegment.${index}.isNotExpiring`)} 
                                     value={value} 
                                     onChange={onChange} 
                                     onBlur={onBlur}
@@ -70,7 +70,7 @@ function CertificationInstance({ control, index, register, remove, watch, errors
                 <FormItem className='flex flex-row flex-start items-center gap-4 col-span-6'>
                     <FormControl>
                         <Controller 
-                            name={`certificationsSegment.${index}.isExpriring`}
+                            name={`certificationsSegment.${index}.isNotExpiring`}
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
                                 <Checkbox checked={value} onCheckedChange={onChange} onBlur={onBlur} />
@@ -117,7 +117,7 @@ export function CertificationsSegment({ form }) {
             ))}
 
             <div className='flex justify-start gap-4'>
-                <Button type='button' onClick={() => append({ name: '', issuer: '', startDate: new Date(), endDate: new Date() })}>
+                <Button type='button' onClick={() => append({ name: '', issuer: '', startDate: new Date(), endDate: new Date(), isNotExpiring: false })}>
                     Add certification
                 </Button>
             </div>

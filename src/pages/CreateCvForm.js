@@ -56,7 +56,7 @@ export function CreateCvForm() {
                 issuer: '',
                 startDate:  new Date(),
                 endDate:  new Date(),
-                isExpiring: false
+                isNotExpiring: false
             }],
             coursesSegment: [{
                 name: '',
@@ -89,9 +89,9 @@ export function CreateCvForm() {
                 return accumulatedResult;
             }, []);
 
-        //const errorMessages = flattenErrors(errors).join(', ');
+        const errorMessages = flattenErrors(errors).join(', ');
         //console.log(errors)
-        //console.log(errorMessages);
+        console.log(errorMessages);
         const firstErrorMessage = flattenErrors(errors)[0];
         toast(firstErrorMessage);
 

@@ -49,7 +49,6 @@ function CourseInstance({ control, index, register, remove, errors}) {
                         />
                     </FormControl>
                 </FormItem>
-
                 <FormItem>
                     <FormLabel>Duration</FormLabel>
                     <FormControl>
