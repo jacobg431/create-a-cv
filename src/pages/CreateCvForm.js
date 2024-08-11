@@ -1,6 +1,11 @@
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { validationSchema } from '@/utils/ValidationSchema';
+import { IsEmptyObject } from '@/utils/IsEmptyObject';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
+import { Toaster } from '@/components/ui/sonner';
+import { toast } from 'sonner';
 import { CertificationsSegment } from '@/components/segments/certifications';
 import { CoursesSegment } from '@/components/segments/courses';
 import { EducationSegment } from '@/components/segments/education';
@@ -10,13 +15,14 @@ import { SkillsSegment } from '@/components/segments/skills';
 
 export function CreateCvForm() {
     const form = useForm({
+        resolver: yupResolver(validationSchema),
         defaultValues: {
             personaliaSegment: {
                 firstName: '',
                 lastName: '',
                 email: '',
                 phone: '',
-                dateOfBirth: null,
+                dateOfBirth: new Date(),
                 gender: '',
                 address: '',
                 address2: '',
@@ -24,41 +30,77 @@ export function CreateCvForm() {
                 city: '',
                 country: '',
                 summary: '',
-                profilePicture: {}
+                profilePicture: null
             },
-            educationSegment: {
-                school: '',
-                degree: '',
-                startDate: null,
-                endDate: null
-            },
-            experienceSegment: {
-                company: '',
-                position: '',
-                startDate: null,
-                endDate: null,
-                description: ''
-            },
+            educationSegment: [
+                {
+                    school: '',
+                    degree: '',
+                    startDate: new Date(),
+                    endDate: new Date(),
+                    isStudying: false
+                }
+            ],
+            experienceSegment: [
+                {
+                    company: '',
+                    position: '',
+                    startDate: new Date(),
+                    endDate: new Date(),
+                    isWorking: false,
+                    description: ''
+                }
+            ],
             skillsSegment: {
-                skills: ''
+                input: '',
+                skills: []
             },
-            certificationsSegment: {
-                name: '',
-                issuer: '',
-                startDate: null,
-                endDate: null
-            },
-            coursesSegment: {
-                name: '',
-                instructor: '',
-                completionDate: null,
-                duration: ''
-            }
+            certificationsSegment: [
+                {
+                    name: '',
+                    issuer: '',
+                    startDate: new Date(),
+                    endDate: new Date(),
+                    isNotExpiring: false
+                }
+            ],
+            coursesSegment: [
+                {
+                    name: '',
+                    instructor: '',
+                    completionDate: new Date(),
+                    duration: ''
+                }
+            ]
         }
     });
 
     function onSubmit(values) {
         console.log('Form Values:', values);
+    }
+
+    function onError(errors) {
+        const flattenErrors = (obj, path = '') =>
+            Object.entries(obj).reduce((accumulatedResult, [key, value]) => {
+                const currentPath = path ? `${path}.${key}` : key;
+                if (value == null) {
+                    return accumulatedResult;
+                }
+                if (value.message) {
+                    accumulatedResult.push(value.message);
+                    return accumulatedResult;
+                }
+                if (!IsEmptyObject(value)) {
+                    accumulatedResult.push(...flattenErrors(value, currentPath));
+                }
+                return accumulatedResult;
+            }, []);
+
+        const errorMessages = flattenErrors(errors).join(', ');
+        //console.log(errors)
+        console.log(errorMessages);
+        const firstErrorMessage = flattenErrors(errors)[0];
+        toast(firstErrorMessage);
     }
 
     return (
@@ -69,7 +111,7 @@ export function CreateCvForm() {
                     <h1 className="text-3xl font-bold mb-4">Fill in the form</h1>
                     <h2 className="text-l mb-6">We'll take care of the rest.</h2>
                     <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="divide-y divide-gray-200">
+                        <form onSubmit={form.handleSubmit(onSubmit, onError)} className="divide-y divide-gray-200">
                             <div className="py-6 mb-12">
                                 <PersonaliaSegment form={form} />
                             </div>
@@ -96,6 +138,7 @@ export function CreateCvForm() {
                     </Form>
                 </div>
             </main>
+            <Toaster />
         </>
     );
 }
