@@ -18,25 +18,29 @@ import { Textarea } from '@/components/ui/textarea';
 import { Controller } from 'react-hook-form';
 
 export function PersonaliaSegment({ form }) {
-    const { control, register, formState: { errors } } = form;
+    const {
+        control,
+        register,
+        formState: { errors }
+    } = form;
 
     return (
         <>
-            <h1 className='text-xl font-bold mb-6'>Personalia</h1>
-            <div className='grid grid-cols-2 gap-4 mb-6'>
+            <h1 className="text-xl font-bold mb-6">Personalia</h1>
+            <div className="grid grid-cols-2 gap-4 mb-6">
                 <FormItem>
                     <FormLabel>First name</FormLabel>
                     <FormControl>
-                        <Input 
-                            {...register('personaliaSegment.firstName')} 
-                            className={errors.personaliaSegment?.firstName ? 'validation-error-outline' : ''} 
+                        <Input
+                            {...register('personaliaSegment.firstName')}
+                            className={errors.personaliaSegment?.firstName ? 'validation-error-outline' : ''}
                         />
                     </FormControl>
                 </FormItem>
                 <FormItem>
                     <FormLabel>Last name</FormLabel>
                     <FormControl>
-                        <Input 
+                        <Input
                             {...register('personaliaSegment.lastName')}
                             className={errors.personaliaSegment?.lastName ? 'validation-error-outline' : ''}
                         />
@@ -45,18 +49,18 @@ export function PersonaliaSegment({ form }) {
                 <FormItem>
                     <FormLabel>Email address</FormLabel>
                     <FormControl>
-                        <Input 
-                            {...register('personaliaSegment.email')} 
-                            className={errors.personaliaSegment?.email ? 'validation-error-outline' : ''} 
+                        <Input
+                            {...register('personaliaSegment.email')}
+                            className={errors.personaliaSegment?.email ? 'validation-error-outline' : ''}
                         />
                     </FormControl>
                 </FormItem>
                 <FormItem>
                     <FormLabel>Phone number</FormLabel>
                     <FormControl>
-                        <Input 
-                            {...register('personaliaSegment.phone')} 
-                            className={errors.personaliaSegment?.phone ? 'validation-error-outline' : ''} 
+                        <Input
+                            {...register('personaliaSegment.phone')}
+                            className={errors.personaliaSegment?.phone ? 'validation-error-outline' : ''}
                         />
                     </FormControl>
                 </FormItem>
@@ -64,14 +68,16 @@ export function PersonaliaSegment({ form }) {
                     <FormLabel>Date of birth</FormLabel>
                     <FormControl>
                         <Controller
-                            name='personaliaSegment.dateOfBirth'
+                            name="personaliaSegment.dateOfBirth"
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
-                                <DatePicker 
-                                    value={value} 
-                                    onChange={onChange} 
-                                    onBlur={onBlur} 
-                                    classNameButton={errors.personaliaSegment?.dateOfBirth ? 'validation-error-outline' : ''} 
+                                <DatePicker
+                                    value={value}
+                                    onChange={onChange}
+                                    onBlur={onBlur}
+                                    classNameButton={
+                                        errors.personaliaSegment?.dateOfBirth ? 'validation-error-outline' : ''
+                                    }
                                 />
                             )}
                         />
@@ -81,20 +87,18 @@ export function PersonaliaSegment({ form }) {
                     <FormLabel>Gender</FormLabel>
                     <FormControl>
                         <Controller
-                            name='personaliaSegment.gender'
+                            name="personaliaSegment.gender"
                             control={control}
                             render={({ field: { onChange, value } }) => (
-                                <Select 
-                                    onValueChange={onChange} 
-                                >
-                                    <SelectTrigger 
-                                        className={errors.personaliaSegment?.gender ? 'validation-error-outline' : ''} 
+                                <Select onValueChange={onChange}>
+                                    <SelectTrigger
+                                        className={errors.personaliaSegment?.gender ? 'validation-error-outline' : ''}
                                     >
                                         <SelectValue>{value ? value : 'Select gender'}</SelectValue>
                                     </SelectTrigger>
                                     <SelectContent>
-                                        <SelectItem value='Female'>Female</SelectItem>
-                                        <SelectItem value='Male'>Male</SelectItem>
+                                        <SelectItem value="Female">Female</SelectItem>
+                                        <SelectItem value="Male">Male</SelectItem>
                                     </SelectContent>
                                 </Select>
                             )}
@@ -104,8 +108,8 @@ export function PersonaliaSegment({ form }) {
                 <FormItem>
                     <FormLabel>Home address</FormLabel>
                     <FormControl>
-                        <Input 
-                            {...register('personaliaSegment.address')} 
+                        <Input
+                            {...register('personaliaSegment.address')}
                             className={errors.personaliaSegment?.address ? 'validation-error-outline' : ''}
                         />
                     </FormControl>
@@ -119,8 +123,8 @@ export function PersonaliaSegment({ form }) {
                 <FormItem>
                     <FormLabel>ZIP code</FormLabel>
                     <FormControl>
-                        <Input 
-                            {...register('personaliaSegment.zipCode')} 
+                        <Input
+                            {...register('personaliaSegment.zipCode')}
                             className={errors.personaliaSegment?.zipCode ? 'validation-error-outline' : ''}
                         />
                     </FormControl>
@@ -128,8 +132,8 @@ export function PersonaliaSegment({ form }) {
                 <FormItem>
                     <FormLabel>City</FormLabel>
                     <FormControl>
-                        <Input 
-                            {...register('personaliaSegment.city')} 
+                        <Input
+                            {...register('personaliaSegment.city')}
                             className={errors.personaliaSegment?.city ? 'validation-error-outline' : ''}
                         />
                     </FormControl>
@@ -137,17 +141,17 @@ export function PersonaliaSegment({ form }) {
                 <FormItem>
                     <FormLabel>Country</FormLabel>
                     <FormControl>
-                        <Input 
-                            {...register('personaliaSegment.country')} 
+                        <Input
+                            {...register('personaliaSegment.country')}
                             className={errors.personaliaSegment?.country ? 'validation-error-outline' : ''}
                         />
                     </FormControl>
                 </FormItem>
             </div>
-            <div className='grid grid-cols-2 gap-4 mb-6'>
+            <div className="grid grid-cols-2 gap-4 mb-6">
                 <Dialog>
                     <DialogTrigger asChild>
-                        <Button variant='outline'>Upload Profile Picture</Button>
+                        <Button variant="outline">Upload Profile Picture</Button>
                     </DialogTrigger>
                     <DialogContent>
                         <DialogHeader>
@@ -156,21 +160,21 @@ export function PersonaliaSegment({ form }) {
                                 The image file to upload must be in JPG/PNG format and must not exceed a size of 4 MB.
                             </DialogDescription>
                         </DialogHeader>
-                        <Input 
-                            type='file' 
-                            {...register('personaliaSegment.profilePicture')} 
+                        <Input
+                            type="file"
+                            {...register('personaliaSegment.profilePicture')}
                             className={errors.personaliaSegment?.profilePicture ? 'validation-error-outline' : ''}
                         />
                         <DialogClose asChild>
-                            <Button type='button'>Confirm</Button>
+                            <Button type="button">Confirm</Button>
                         </DialogClose>
                     </DialogContent>
                 </Dialog>
-                <FormItem className='col-span-2'>
+                <FormItem className="col-span-2">
                     <FormLabel>Summary</FormLabel>
                     <FormControl>
-                        <Textarea 
-                            {...register('personaliaSegment.summary')} 
+                        <Textarea
+                            {...register('personaliaSegment.summary')}
                             className={errors.personaliaSegment?.summary ? 'validation-error-outline' : ''}
                         />
                     </FormControl>
