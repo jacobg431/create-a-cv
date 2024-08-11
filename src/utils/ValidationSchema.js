@@ -78,9 +78,8 @@ export const validationSchema = yup.object().shape({
                     if (!isStudying && !IsFormerDateEarlierThanLatterDate(startDate, input.value)) {
                         console.log(isStudying);
                         return yup.date().min(GetDateByDiff(startDate, 1), 'Education end date must be later than start date');
-                    } else {
-                        return yup.date().nullable();
                     }
+                    return yup.date().nullable();
                 }),
             isStudying: yup.boolean()
         })
@@ -97,9 +96,8 @@ export const validationSchema = yup.object().shape({
                     const [isWorking, startDate] = values;
                     if (!isWorking && !IsFormerDateEarlierThanLatterDate(startDate, input.value)) {
                         return yup.date().min(GetDateByDiff(startDate, 1), 'Experience end date must be later than start date');
-                    } else {
-                        return yup.date().nullable();
-                    }
+                    } 
+                    return yup.date().nullable();
                 }),
             isWorking: yup.boolean(),
             description: yup.string().nullable()
@@ -121,9 +119,8 @@ export const validationSchema = yup.object().shape({
                     const [isNotExpiring, startDate] = values;
                     if (!isNotExpiring && !IsFormerDateEarlierThanLatterDate(startDate, input.value)) {
                         return yup.date().min(GetDateByDiff(startDate, 1), 'Expiration date must be later than start date');
-                    } else {
-                        return yup.date().nullable();
-                    }
+                    } 
+                    return yup.date().nullable();
                 }),
             isNotExpiring: yup.boolean()
         })

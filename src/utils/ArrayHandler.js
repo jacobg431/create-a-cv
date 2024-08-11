@@ -11,8 +11,8 @@ export function ReverseOrderOfArray(array) {
     let arrayCopy = [];
     let stack = new Stack();
 
-    for (let i = 0; i < array.length; i++) {
-        stack.push(array[i]);
+    for (const element of array) {
+        stack.push(element);
     }
     for (let i = 0; i < array.length; i++) {
         arrayCopy[i] = stack.pop();

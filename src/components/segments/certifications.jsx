@@ -19,7 +19,7 @@ function CertificationInstance({ control, index, register, remove, watch, errors
                     <FormControl>
                         <Input 
                             {...register(`certificationsSegment.${index}.name`)}
-                            className={errors.certificationsSegment && errors.certificationsSegment[index]?.name ? 'validation-error-outline' : ''} 
+                            className={(errors?.certificationsSegment && errors?.certificationsSegment[index]?.name) ? 'validation-error-outline' : ''} 
                         />
                     </FormControl>
                 </FormItem>
@@ -28,7 +28,7 @@ function CertificationInstance({ control, index, register, remove, watch, errors
                     <FormControl>
                         <Input 
                             {...register(`certificationsSegment.${index}.issuer`)}
-                            className={errors.certificationsSegment && errors.certificationsSegment[index]?.issuer ? 'validation-error-outline' : ''} 
+                            className={(errors?.certificationsSegment && errors?.certificationsSegment[index]?.issuer) ? 'validation-error-outline' : ''} 
                         />
                     </FormControl>
                 </FormItem>
@@ -43,7 +43,7 @@ function CertificationInstance({ control, index, register, remove, watch, errors
                                     value={value} 
                                     onChange={onChange} 
                                     onBlur={onBlur} 
-                                    classNameButton={errors.certificationsSegment && errors.certificationsSegment[index]?.startDate ? 'validation-error-outline' : ''} 
+                                    classNameButton={(errors?.certificationsSegment && errors?.certificationsSegment[index]?.startDate) ? 'validation-error-outline' : ''} 
                                 />
                             )}
                         />
@@ -61,7 +61,7 @@ function CertificationInstance({ control, index, register, remove, watch, errors
                                     value={value} 
                                     onChange={onChange} 
                                     onBlur={onBlur}
-                                    classNameButton={errors.certificationsSegment && errors.certificationsSegment[index]?.endDate ? 'validation-error-outline' : ''} 
+                                    classNameButton={(errors?.certificationsSegment && errors?.certificationsSegment[index]?.endDate) ? 'validation-error-outline' : ''} 
                                 />
                             )}
                         />
