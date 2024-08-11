@@ -7,9 +7,8 @@ export function SliceArrayByValue(array, value) {
 }
 
 export function ReverseOrderOfArray(array) {
-
-    let arrayCopy = [];
-    let stack = new Stack();
+    const arrayCopy = [];
+    const stack = new Stack();
 
     for (const element of array) {
         stack.push(element);
@@ -19,5 +18,4 @@ export function ReverseOrderOfArray(array) {
     }
 
     return arrayCopy;
-
 }

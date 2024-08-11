@@ -9,7 +9,7 @@ export class Stack {
 
     pop() {
         if (this.items.length === 0) {
-            return "Underflow";
+            return 'Underflow';
         }
         return this.items.pop();
     }
