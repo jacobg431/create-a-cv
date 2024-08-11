@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup'
-import { validationSchema } from '@/utils/validationSchema'  
-import { isEmptyObject } from '@/utils/isEmptyObject'  
+import { yupResolver } from '@hookform/resolvers/yup';
+import { validationSchema } from '@/utils/ValidationSchema';
+import { IsEmptyObject } from '@/utils/IsEmptyObject';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { Toaster } from '@/components/ui/sonner';
@@ -83,7 +83,7 @@ export function CreateCvForm() {
                     accumulatedResult.push(value.message);
                     return accumulatedResult;
                 }
-                if (!isEmptyObject(value)) {
+                if (!IsEmptyObject(value)) {
                     accumulatedResult.push(...flattenErrors(value, currentPath));
                 }
                 return accumulatedResult;
