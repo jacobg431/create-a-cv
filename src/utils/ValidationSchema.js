@@ -123,7 +123,9 @@ export const validationSchema = yup.object().shape({
                 endDate: yup.date().when(['isNotExpiring', 'startDate'], (values, _schema, input) => {
                     const [isNotExpiring, startDate] = values;
                     if (!isNotExpiring && !IsFormerDateEarlierThanLatterDate(startDate, input.value)) {
-                        return yup.date().min(GetDateByDiff(startDate, 1), 'Expiration date must be later than start date');
+                        return yup
+                            .date()
+                            .min(GetDateByDiff(startDate, 1), 'Expiration date must be later than start date');
                     }
                     return yup.date().nullable();
                 }),
@@ -144,5 +146,5 @@ export const validationSchema = yup.object().shape({
                     .required('Course duration is required')
             })
         )
-    }) 
+    })
 });
