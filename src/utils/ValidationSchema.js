@@ -69,72 +69,80 @@ export const validationSchema = yup.object().shape({
             )
     }),
 
-    educationSegment: yup.array().of(
-        yup.object().shape({
-            school: yup.string().required('School name is required'),
-            //degree: yup.string().required('Degree is required'),
-            startDate: yup.date().required('Education start date is required'),
-            endDate: yup.date().when(['isStudying', 'startDate'], (values, _schema, input) => {
-                const [isStudying, startDate] = values;
-                if (!isStudying && !IsFormerDateEarlierThanLatterDate(startDate, input.value)) {
-                    return yup
-                        .date()
-                        .min(GetDateByDiff(startDate, 1), 'Education end date must be later than start date');
-                }
-                return yup.date().nullable();
-            }),
-            isStudying: yup.boolean()
-        })
-    ),
+    educationSegment: yup.object().shape({
+        education: yup.array().of(
+            yup.object().shape({
+                school: yup.string().required('School name is required'),
+                //degree: yup.string().required('Degree is required'),
+                startDate: yup.date().required('Education start date is required'),
+                endDate: yup.date().when(['isStudying', 'startDate'], (values, _schema, input) => {
+                    const [isStudying, startDate] = values;
+                    if (!isStudying && !IsFormerDateEarlierThanLatterDate(startDate, input.value)) {
+                        return yup
+                            .date()
+                            .min(GetDateByDiff(startDate, 1), 'Education end date must be later than start date');
+                    }
+                    return yup.date().nullable();
+                }),
+                isStudying: yup.boolean()
+            })
+        )
+    }),
 
-    experienceSegment: yup.array().of(
-        yup.object().shape({
-            company: yup.string().required('Company is required'),
-            position: yup.string().required('Position is required'),
-            startDate: yup.date().required('Experience start date is required'),
-            endDate: yup.date().when(['isWorking', 'startDate'], (values, _schema, input) => {
-                const [isWorking, startDate] = values;
-                if (!isWorking && !IsFormerDateEarlierThanLatterDate(startDate, input.value)) {
-                    return yup
-                        .date()
-                        .min(GetDateByDiff(startDate, 1), 'Experience end date must be later than start date');
-                }
-                return yup.date().nullable();
-            }),
-            isWorking: yup.boolean(),
-            description: yup.string().nullable()
-        })
-    ),
+    experienceSegment: yup.object().shape({
+        experience: yup.array().of(
+            yup.object().shape({
+                company: yup.string().required('Company is required'),
+                position: yup.string().required('Position is required'),
+                startDate: yup.date().required('Experience start date is required'),
+                endDate: yup.date().when(['isWorking', 'startDate'], (values, _schema, input) => {
+                    const [isWorking, startDate] = values;
+                    if (!isWorking && !IsFormerDateEarlierThanLatterDate(startDate, input.value)) {
+                        return yup
+                            .date()
+                            .min(GetDateByDiff(startDate, 1), 'Experience end date must be later than start date');
+                    }
+                    return yup.date().nullable();
+                }),
+                isWorking: yup.boolean(),
+                description: yup.string().nullable()
+            })
+        )
+    }),
 
     skillsSegment: yup.object().shape({
         //placeholder
     }),
 
-    certificationsSegment: yup.array().of(
-        yup.object().shape({
-            name: yup.string().required('Course name is required'),
-            issuer: yup.string().required('Issuer organization is required'),
-            startDate: yup.date().required('Certification issue date is required'),
-            endDate: yup.date().when(['isNotExpiring', 'startDate'], (values, _schema, input) => {
-                const [isNotExpiring, startDate] = values;
-                if (!isNotExpiring && !IsFormerDateEarlierThanLatterDate(startDate, input.value)) {
-                    return yup.date().min(GetDateByDiff(startDate, 1), 'Expiration date must be later than start date');
-                }
-                return yup.date().nullable();
-            }),
-            isNotExpiring: yup.boolean()
-        })
-    ),
+    certificationsSegment: yup.object().shape({
+        certifications: yup.array().of(
+            yup.object().shape({
+                name: yup.string().required('Course name is required'),
+                issuer: yup.string().required('Issuer organization is required'),
+                startDate: yup.date().required('Certification issue date is required'),
+                endDate: yup.date().when(['isNotExpiring', 'startDate'], (values, _schema, input) => {
+                    const [isNotExpiring, startDate] = values;
+                    if (!isNotExpiring && !IsFormerDateEarlierThanLatterDate(startDate, input.value)) {
+                        return yup.date().min(GetDateByDiff(startDate, 1), 'Expiration date must be later than start date');
+                    }
+                    return yup.date().nullable();
+                }),
+                isNotExpiring: yup.boolean()
+            })
+        )
+    }),
 
-    coursesSegment: yup.array().of(
-        yup.object().shape({
-            name: yup.string().required('Course name is required'),
-            instructor: yup.string().required('Instructor is required'),
-            completionDate: yup.date().required('Course completion date is required'),
-            duration: yup
-                .string()
-                .oneOf(['Hours', 'Days', 'Weeks', 'Months'], 'Select an appropriate course duration')
-                .required('Course duration is required')
-        })
-    )
+    coursesSegment: yup.object().shape({
+        courses: yup.array().of(
+            yup.object().shape({
+                name: yup.string().required('Course name is required'),
+                instructor: yup.string().required('Instructor is required'),
+                completionDate: yup.date().required('Course completion date is required'),
+                duration: yup
+                    .string()
+                    .oneOf(['Hours', 'Days', 'Weeks', 'Months'], 'Select an appropriate course duration')
+                    .required('Course duration is required')
+            })
+        )
+    }) 
 });

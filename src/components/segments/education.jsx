@@ -59,7 +59,7 @@ function EducationInstance({ control, index, register, remove, watch, errors }) 
                     <FormLabel>Graduation date</FormLabel>
                     <FormControl>
                         <Controller
-                            name={`educationSegment.education?.${index}.endDate`}
+                            name={`educationSegment.education.${index}.endDate`}
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
                                 <DatePicker
