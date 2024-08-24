@@ -26,7 +26,9 @@ function CourseInstance({ control, index, register, remove, errors }) {
                     <FormControl>
                         <Input
                             {...register(`coursesSegment.courses.${index}.instructor`)}
-                            className={errors?.coursesSegment?.courses?.[index]?.instructor ? 'validation-error-outline' : ''}
+                            className={
+                                errors?.coursesSegment?.courses?.[index]?.instructor ? 'validation-error-outline' : ''
+                            }
                         />
                     </FormControl>
                 </FormItem>
@@ -42,7 +44,9 @@ function CourseInstance({ control, index, register, remove, errors }) {
                                     onChange={onChange}
                                     onBlur={onBlur}
                                     classNameButton={
-                                        errors?.coursesSegment?.courses?.[index]?.startDate ? 'validation-error-outline' : ''
+                                        errors?.coursesSegment?.courses?.[index]?.startDate
+                                            ? 'validation-error-outline'
+                                            : ''
                                     }
                                 />
                             )}
@@ -59,7 +63,9 @@ function CourseInstance({ control, index, register, remove, errors }) {
                                 <Select onValueChange={onChange}>
                                     <SelectTrigger
                                         className={
-                                            errors?.coursesSegment?.courses?.[index]?.duration ? 'validation-error-outline' : ''
+                                            errors?.coursesSegment?.courses?.[index]?.duration
+                                                ? 'validation-error-outline'
+                                                : ''
                                         }
                                     >
                                         <SelectValue>{value ? value : 'Select duration'}</SelectValue>

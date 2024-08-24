@@ -17,7 +17,9 @@ function EducationInstance({ control, index, register, remove, watch, errors }) 
                     <FormControl>
                         <Input
                             {...register(`educationSegment.education.${index}.school`)}
-                            className={errors?.educationSegment?.education?.[index]?.school ? 'validation-error-outline' : ''}
+                            className={
+                                errors?.educationSegment?.education?.[index]?.school ? 'validation-error-outline' : ''
+                            }
                         />
                     </FormControl>
                 </FormItem>
@@ -26,7 +28,9 @@ function EducationInstance({ control, index, register, remove, watch, errors }) 
                     <FormControl>
                         <Input
                             {...register(`educationSegment.education.${index}.degree`)}
-                            className={errors?.educationSegment?.education?.[index]?.degree ? 'validation-error-outline' : ''}
+                            className={
+                                errors?.educationSegment?.education?.[index]?.degree ? 'validation-error-outline' : ''
+                            }
                         />
                     </FormControl>
                 </FormItem>
@@ -42,7 +46,9 @@ function EducationInstance({ control, index, register, remove, watch, errors }) 
                                     onChange={onChange}
                                     onBlur={onBlur}
                                     classNameButton={
-                                        errors?.educationSegment?.education?.[index]?.startDate ? 'validation-error-outline' : ''
+                                        errors?.educationSegment?.education?.[index]?.startDate
+                                            ? 'validation-error-outline'
+                                            : ''
                                     }
                                 />
                             )}
@@ -62,7 +68,9 @@ function EducationInstance({ control, index, register, remove, watch, errors }) 
                                     onChange={onChange}
                                     onBlur={onBlur}
                                     classNameButton={
-                                        errors?.educationSegment?.education?.[index]?.endDate ? 'validation-error-outline' : ''
+                                        errors?.educationSegment?.education?.[index]?.endDate
+                                            ? 'validation-error-outline'
+                                            : ''
                                     }
                                 />
                             )}

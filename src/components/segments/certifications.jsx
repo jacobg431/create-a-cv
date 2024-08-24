@@ -17,7 +17,11 @@ function CertificationInstance({ control, index, register, remove, watch, errors
                     <FormControl>
                         <Input
                             {...register(`certificationsSegment.certifications.${index}.name`)}
-                            className={errors?.certificationsSegment?.certifications?.[index]?.name ? 'validation-error-outline' : ''}
+                            className={
+                                errors?.certificationsSegment?.certifications?.[index]?.name
+                                    ? 'validation-error-outline'
+                                    : ''
+                            }
                         />
                     </FormControl>
                 </FormItem>
@@ -26,7 +30,11 @@ function CertificationInstance({ control, index, register, remove, watch, errors
                     <FormControl>
                         <Input
                             {...register(`certificationsSegment.certifications.${index}.issuer`)}
-                            className={errors?.certificationsSegment?.certifications?.[index]?.issuer ? 'validation-error-outline' : ''}
+                            className={
+                                errors?.certificationsSegment?.certifications?.[index]?.issuer
+                                    ? 'validation-error-outline'
+                                    : ''
+                            }
                         />
                     </FormControl>
                 </FormItem>

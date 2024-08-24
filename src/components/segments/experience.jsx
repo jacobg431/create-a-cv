@@ -18,7 +18,11 @@ function ExperienceInstance({ control, index, register, remove, watch, errors })
                     <FormControl>
                         <Input
                             {...register(`experienceSegment.experience.${index}.company`)}
-                            className={errors?.experienceSegment?.experience?.[index]?.company ? 'validation-error-outline' : ''}
+                            className={
+                                errors?.experienceSegment?.experience?.[index]?.company
+                                    ? 'validation-error-outline'
+                                    : ''
+                            }
                         />
                     </FormControl>
                 </FormItem>
@@ -27,7 +31,11 @@ function ExperienceInstance({ control, index, register, remove, watch, errors })
                     <FormControl>
                         <Input
                             {...register(`experienceSegment.experience.${index}.position`)}
-                            className={errors?.experienceSegment?.experience?.[index]?.position ? 'validation-error-outline' : ''}
+                            className={
+                                errors?.experienceSegment?.experience?.[index]?.position
+                                    ? 'validation-error-outline'
+                                    : ''
+                            }
                         />
                     </FormControl>
                 </FormItem>
@@ -43,7 +51,9 @@ function ExperienceInstance({ control, index, register, remove, watch, errors })
                                     onChange={onChange}
                                     onBlur={onBlur}
                                     classNameButton={
-                                        errors?.experienceSegment?.experience?.[index]?.startDate ? 'validation-error-outline' : ''
+                                        errors?.experienceSegment?.experience?.[index]?.startDate
+                                            ? 'validation-error-outline'
+                                            : ''
                                     }
                                 />
                             )}
@@ -63,7 +73,9 @@ function ExperienceInstance({ control, index, register, remove, watch, errors })
                                     onChange={onChange}
                                     onBlur={onBlur}
                                     classNameButton={
-                                        errors?.experienceSegment?.experience?.[index]?.endDate ? 'validation-error-outline' : ''
+                                        errors?.experienceSegment?.experience?.[index]?.endDate
+                                            ? 'validation-error-outline'
+                                            : ''
                                     }
                                 />
                             )}
@@ -90,7 +102,9 @@ function ExperienceInstance({ control, index, register, remove, watch, errors })
                         <Textarea
                             {...register(`experienceSegment.experience.${index}.description`)}
                             className={
-                                errors?.experienceSegment?.experience?.[index]?.description ? 'validation-error-outline' : ''
+                                errors?.experienceSegment?.experience?.[index]?.description
+                                    ? 'validation-error-outline'
+                                    : ''
                             }
                         />
                     </FormControl>
