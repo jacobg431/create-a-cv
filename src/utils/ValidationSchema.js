@@ -77,7 +77,6 @@ export const validationSchema = yup.object().shape({
             endDate: yup.date().when(['isStudying', 'startDate'], (values, _schema, input) => {
                 const [isStudying, startDate] = values;
                 if (!isStudying && !IsFormerDateEarlierThanLatterDate(startDate, input.value)) {
-                    console.log(isStudying);
                     return yup
                         .date()
                         .min(GetDateByDiff(startDate, 1), 'Education end date must be later than start date');
