@@ -16,9 +16,11 @@ function EducationInstance({ control, index, register, remove, watch, errors }) 
                     <FormLabel>Name of the school</FormLabel>
                     <FormControl>
                         <Input
-                            {...register(`educationSegment.education.${index}.school`)}
+                            {...register(`educationSegment.educationList.${index}.school`)}
                             className={
-                                errors?.educationSegment?.education?.[index]?.school ? 'validation-error-outline' : ''
+                                errors?.educationSegment?.educationList?.[index]?.school
+                                    ? 'validation-error-outline'
+                                    : ''
                             }
                         />
                     </FormControl>
@@ -27,9 +29,11 @@ function EducationInstance({ control, index, register, remove, watch, errors }) 
                     <FormLabel>Degree</FormLabel>
                     <FormControl>
                         <Input
-                            {...register(`educationSegment.education.${index}.degree`)}
+                            {...register(`educationSegment.educationList.${index}.degree`)}
                             className={
-                                errors?.educationSegment?.education?.[index]?.degree ? 'validation-error-outline' : ''
+                                errors?.educationSegment?.educationList?.[index]?.degree
+                                    ? 'validation-error-outline'
+                                    : ''
                             }
                         />
                     </FormControl>
@@ -38,7 +42,7 @@ function EducationInstance({ control, index, register, remove, watch, errors }) 
                     <FormLabel>Enrollment date</FormLabel>
                     <FormControl>
                         <Controller
-                            name={`educationSegment.education.${index}.startDate`}
+                            name={`educationSegment.educationList.${index}.startDate`}
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
                                 <DatePicker
@@ -46,7 +50,7 @@ function EducationInstance({ control, index, register, remove, watch, errors }) 
                                     onChange={onChange}
                                     onBlur={onBlur}
                                     classNameButton={
-                                        errors?.educationSegment?.education?.[index]?.startDate
+                                        errors?.educationSegment?.educationList?.[index]?.startDate
                                             ? 'validation-error-outline'
                                             : ''
                                     }
@@ -59,16 +63,16 @@ function EducationInstance({ control, index, register, remove, watch, errors }) 
                     <FormLabel>Graduation date</FormLabel>
                     <FormControl>
                         <Controller
-                            name={`educationSegment.education.${index}.endDate`}
+                            name={`educationSegment.educationList.${index}.endDate`}
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
                                 <DatePicker
-                                    disabled={watch(`educationSegment.education.${index}.isStudying`)}
+                                    disabled={watch(`educationSegment.educationList.${index}.isStudying`)}
                                     value={value}
                                     onChange={onChange}
                                     onBlur={onBlur}
                                     classNameButton={
-                                        errors?.educationSegment?.education?.[index]?.endDate
+                                        errors?.educationSegment?.educationList?.[index]?.endDate
                                             ? 'validation-error-outline'
                                             : ''
                                     }
@@ -80,7 +84,7 @@ function EducationInstance({ control, index, register, remove, watch, errors }) 
                 <FormItem className="flex flex-row flex-start items-center gap-4 col-span-6">
                     <FormControl>
                         <Controller
-                            name={`educationSegment.education.${index}.isStudying`}
+                            name={`educationSegment.educationList.${index}.isStudying`}
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
                                 <Checkbox checked={value} onCheckedChange={onChange} onBlur={onBlur} />
@@ -106,7 +110,7 @@ export function EducationSegment({ form }) {
     } = form;
     const { fields, append, remove } = useFieldArray({
         control,
-        name: 'educationSegment.education'
+        name: 'educationSegment.educationList'
     });
 
     return (

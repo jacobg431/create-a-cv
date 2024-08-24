@@ -31,7 +31,7 @@ export function SkillsSegment({ form }) {
     const { control, register, getValues } = form;
     const { fields, append, remove } = useFieldArray({
         control,
-        name: 'skillsSegment.skills'
+        name: 'skillsSegment.skillList'
     });
 
     return (
@@ -51,7 +51,7 @@ export function SkillsSegment({ form }) {
                         key={field.id}
                         index={index}
                         remove={remove}
-                        value={getValues(`skillsSegment.skills.${index}.skill`)}
+                        value={getValues(`skillsSegment.skillList.${index}.skill`)}
                     />
                 ))}
             </div>

@@ -33,7 +33,7 @@ export function CreateCvForm() {
                 profilePicture: null
             },
             educationSegment: {
-                education: [
+                educationList: [
                     {
                         school: '',
                         degree: '',
@@ -44,7 +44,7 @@ export function CreateCvForm() {
                 ]
             },
             experienceSegment: {
-                experience: [
+                experienceList: [
                     {
                         company: '',
                         position: '',
@@ -57,10 +57,10 @@ export function CreateCvForm() {
             },
             skillsSegment: {
                 input: '',
-                skills: []
+                skillList: []
             },
             certificationsSegment: {
-                certifications: [
+                certificationList: [
                     {
                         name: '',
                         issuer: '',
@@ -71,7 +71,7 @@ export function CreateCvForm() {
                 ]
             },
             coursesSegment: {
-                courses: [
+                courseList: [
                     {
                         name: '',
                         instructor: '',

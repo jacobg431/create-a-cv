@@ -70,7 +70,7 @@ export const validationSchema = yup.object().shape({
     }),
 
     educationSegment: yup.object().shape({
-        education: yup.array().of(
+        educationList: yup.array().of(
             yup.object().shape({
                 school: yup.string().required('School name is required'),
                 //degree: yup.string().required('Degree is required'),
@@ -90,7 +90,7 @@ export const validationSchema = yup.object().shape({
     }),
 
     experienceSegment: yup.object().shape({
-        experience: yup.array().of(
+        experienceList: yup.array().of(
             yup.object().shape({
                 company: yup.string().required('Company is required'),
                 position: yup.string().required('Position is required'),
@@ -115,7 +115,7 @@ export const validationSchema = yup.object().shape({
     }),
 
     certificationsSegment: yup.object().shape({
-        certifications: yup.array().of(
+        certificationList: yup.array().of(
             yup.object().shape({
                 name: yup.string().required('Course name is required'),
                 issuer: yup.string().required('Issuer organization is required'),
@@ -135,7 +135,7 @@ export const validationSchema = yup.object().shape({
     }),
 
     coursesSegment: yup.object().shape({
-        courses: yup.array().of(
+        courseList: yup.array().of(
             yup.object().shape({
                 name: yup.string().required('Course name is required'),
                 instructor: yup.string().required('Instructor is required'),

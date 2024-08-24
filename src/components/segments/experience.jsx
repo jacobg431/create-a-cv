@@ -17,9 +17,9 @@ function ExperienceInstance({ control, index, register, remove, watch, errors })
                     <FormLabel>Company</FormLabel>
                     <FormControl>
                         <Input
-                            {...register(`experienceSegment.experience.${index}.company`)}
+                            {...register(`experienceSegment.experienceList.${index}.company`)}
                             className={
-                                errors?.experienceSegment?.experience?.[index]?.company
+                                errors?.experienceSegment?.experienceList?.[index]?.company
                                     ? 'validation-error-outline'
                                     : ''
                             }
@@ -30,9 +30,9 @@ function ExperienceInstance({ control, index, register, remove, watch, errors })
                     <FormLabel>Position</FormLabel>
                     <FormControl>
                         <Input
-                            {...register(`experienceSegment.experience.${index}.position`)}
+                            {...register(`experienceSegment.experienceList.${index}.position`)}
                             className={
-                                errors?.experienceSegment?.experience?.[index]?.position
+                                errors?.experienceSegment?.experienceList?.[index]?.position
                                     ? 'validation-error-outline'
                                     : ''
                             }
@@ -43,7 +43,7 @@ function ExperienceInstance({ control, index, register, remove, watch, errors })
                     <FormLabel>Start date</FormLabel>
                     <FormControl>
                         <Controller
-                            name={`experienceSegment.experience.${index}.startDate`}
+                            name={`experienceSegment.experienceList.${index}.startDate`}
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
                                 <DatePicker
@@ -51,7 +51,7 @@ function ExperienceInstance({ control, index, register, remove, watch, errors })
                                     onChange={onChange}
                                     onBlur={onBlur}
                                     classNameButton={
-                                        errors?.experienceSegment?.experience?.[index]?.startDate
+                                        errors?.experienceSegment?.experienceList?.[index]?.startDate
                                             ? 'validation-error-outline'
                                             : ''
                                     }
@@ -64,16 +64,16 @@ function ExperienceInstance({ control, index, register, remove, watch, errors })
                     <FormLabel>End date</FormLabel>
                     <FormControl>
                         <Controller
-                            name={`experienceSegment.experience.${index}.endDate`}
+                            name={`experienceSegment.experienceList.${index}.endDate`}
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
                                 <DatePicker
-                                    disabled={watch(`experienceSegment.experience.${index}.isWorking`)}
+                                    disabled={watch(`experienceSegment.experienceList.${index}.isWorking`)}
                                     value={value}
                                     onChange={onChange}
                                     onBlur={onBlur}
                                     classNameButton={
-                                        errors?.experienceSegment?.experience?.[index]?.endDate
+                                        errors?.experienceSegment?.experienceList?.[index]?.endDate
                                             ? 'validation-error-outline'
                                             : ''
                                     }
@@ -85,7 +85,7 @@ function ExperienceInstance({ control, index, register, remove, watch, errors })
                 <FormItem className="flex flex-row flex-start items-center gap-4 col-span-6">
                     <FormControl>
                         <Controller
-                            name={`experienceSegment.experience.${index}.isWorking`}
+                            name={`experienceSegment.experienceList.${index}.isWorking`}
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
                                 <Checkbox checked={value} onCheckedChange={onChange} onBlur={onBlur} />
@@ -100,9 +100,9 @@ function ExperienceInstance({ control, index, register, remove, watch, errors })
                     <FormLabel>Description</FormLabel>
                     <FormControl>
                         <Textarea
-                            {...register(`experienceSegment.experience.${index}.description`)}
+                            {...register(`experienceSegment.experienceList.${index}.description`)}
                             className={
-                                errors?.experienceSegment?.experience?.[index]?.description
+                                errors?.experienceSegment?.experienceList?.[index]?.description
                                     ? 'validation-error-outline'
                                     : ''
                             }
@@ -126,7 +126,7 @@ export function ExperienceSegment({ form }) {
     } = form;
     const { fields, append, remove } = useFieldArray({
         control,
-        name: 'experienceSegment.experience'
+        name: 'experienceSegment.experienceList'
     });
 
     return (

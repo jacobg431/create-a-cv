@@ -16,9 +16,9 @@ function CertificationInstance({ control, index, register, remove, watch, errors
                     <FormLabel>Certification name</FormLabel>
                     <FormControl>
                         <Input
-                            {...register(`certificationsSegment.certifications.${index}.name`)}
+                            {...register(`certificationsSegment.certificationList.${index}.name`)}
                             className={
-                                errors?.certificationsSegment?.certifications?.[index]?.name
+                                errors?.certificationsSegment?.certificationList?.[index]?.name
                                     ? 'validation-error-outline'
                                     : ''
                             }
@@ -29,9 +29,9 @@ function CertificationInstance({ control, index, register, remove, watch, errors
                     <FormLabel>Issuer organization</FormLabel>
                     <FormControl>
                         <Input
-                            {...register(`certificationsSegment.certifications.${index}.issuer`)}
+                            {...register(`certificationsSegment.certificationList.${index}.issuer`)}
                             className={
-                                errors?.certificationsSegment?.certifications?.[index]?.issuer
+                                errors?.certificationsSegment?.certificationList?.[index]?.issuer
                                     ? 'validation-error-outline'
                                     : ''
                             }
@@ -42,7 +42,7 @@ function CertificationInstance({ control, index, register, remove, watch, errors
                     <FormLabel>Date of issue</FormLabel>
                     <FormControl>
                         <Controller
-                            name={`certificationsSegment.certifications.${index}.startDate`}
+                            name={`certificationsSegment.certificationList.${index}.startDate`}
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
                                 <DatePicker
@@ -50,7 +50,7 @@ function CertificationInstance({ control, index, register, remove, watch, errors
                                     onChange={onChange}
                                     onBlur={onBlur}
                                     classNameButton={
-                                        errors?.certificationsSegment?.certifications?.[index]?.startDate
+                                        errors?.certificationsSegment?.certificationList?.[index]?.startDate
                                             ? 'validation-error-outline'
                                             : ''
                                     }
@@ -63,16 +63,16 @@ function CertificationInstance({ control, index, register, remove, watch, errors
                     <FormLabel>Date of expiration</FormLabel>
                     <FormControl>
                         <Controller
-                            name={`certificationsSegment.certifications.${index}.endDate`}
+                            name={`certificationsSegment.certificationList.${index}.endDate`}
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
                                 <DatePicker
-                                    disabled={watch(`certificationsSegment.certifications.${index}.isNotExpiring`)}
+                                    disabled={watch(`certificationsSegment.certificationList.${index}.isNotExpiring`)}
                                     value={value}
                                     onChange={onChange}
                                     onBlur={onBlur}
                                     classNameButton={
-                                        errors?.certificationsSegment?.certifications?.[index]?.endDate
+                                        errors?.certificationsSegment?.certificationList?.[index]?.endDate
                                             ? 'validation-error-outline'
                                             : ''
                                     }
@@ -84,7 +84,7 @@ function CertificationInstance({ control, index, register, remove, watch, errors
                 <FormItem className="flex flex-row flex-start items-center gap-4 col-span-6">
                     <FormControl>
                         <Controller
-                            name={`certificationsSegment.certifications.${index}.isNotExpiring`}
+                            name={`certificationsSegment.certificationList.${index}.isNotExpiring`}
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
                                 <Checkbox checked={value} onCheckedChange={onChange} onBlur={onBlur} />
@@ -110,7 +110,7 @@ export function CertificationsSegment({ form }) {
     } = form;
     const { fields, append, remove } = useFieldArray({
         control,
-        name: 'certificationsSegment.certifications'
+        name: 'certificationsSegment.certificationList'
     });
 
     return (
