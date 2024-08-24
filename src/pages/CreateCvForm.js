@@ -32,46 +32,54 @@ export function CreateCvForm() {
                 summary: '',
                 profilePicture: null
             },
-            educationSegment: [
-                {
-                    school: '',
-                    degree: '',
-                    startDate: new Date(),
-                    endDate: new Date(),
-                    isStudying: false
-                }
-            ],
-            experienceSegment: [
-                {
-                    company: '',
-                    position: '',
-                    startDate: new Date(),
-                    endDate: new Date(),
-                    isWorking: false,
-                    description: ''
-                }
-            ],
+            educationSegment: {
+                educationList: [
+                    {
+                        school: '',
+                        degree: '',
+                        startDate: new Date(),
+                        endDate: new Date(),
+                        isStudying: false
+                    }
+                ]
+            },
+            experienceSegment: {
+                experienceList: [
+                    {
+                        company: '',
+                        position: '',
+                        startDate: new Date(),
+                        endDate: new Date(),
+                        isWorking: false,
+                        description: ''
+                    }
+                ]
+            },
             skillsSegment: {
                 input: '',
-                skills: []
+                skillList: []
             },
-            certificationsSegment: [
-                {
-                    name: '',
-                    issuer: '',
-                    startDate: new Date(),
-                    endDate: new Date(),
-                    isNotExpiring: false
-                }
-            ],
-            coursesSegment: [
-                {
-                    name: '',
-                    instructor: '',
-                    completionDate: new Date(),
-                    duration: ''
-                }
-            ]
+            certificationsSegment: {
+                certificationList: [
+                    {
+                        name: '',
+                        issuer: '',
+                        startDate: new Date(),
+                        endDate: new Date(),
+                        isNotExpiring: false
+                    }
+                ]
+            },
+            coursesSegment: {
+                courseList: [
+                    {
+                        name: '',
+                        instructor: '',
+                        completionDate: new Date(),
+                        duration: ''
+                    }
+                ]
+            }
         }
     });
 

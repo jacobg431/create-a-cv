@@ -16,8 +16,10 @@ function CourseInstance({ control, index, register, remove, errors }) {
                     <FormLabel>Name</FormLabel>
                     <FormControl>
                         <Input
-                            {...register(`coursesSegment.${index}.name`)}
-                            className={errors?.coursesSegment?.[index]?.name ? 'validation-error-outline' : ''}
+                            {...register(`coursesSegment.courseList.${index}.name`)}
+                            className={
+                                errors?.coursesSegment?.courseList?.[index]?.name ? 'validation-error-outline' : ''
+                            }
                         />
                     </FormControl>
                 </FormItem>
@@ -25,8 +27,12 @@ function CourseInstance({ control, index, register, remove, errors }) {
                     <FormLabel>Instructor</FormLabel>
                     <FormControl>
                         <Input
-                            {...register(`coursesSegment.${index}.instructor`)}
-                            className={errors?.coursesSegment?.[index]?.instructor ? 'validation-error-outline' : ''}
+                            {...register(`coursesSegment.courseList.${index}.instructor`)}
+                            className={
+                                errors?.coursesSegment?.courseList?.[index]?.instructor
+                                    ? 'validation-error-outline'
+                                    : ''
+                            }
                         />
                     </FormControl>
                 </FormItem>
@@ -34,7 +40,7 @@ function CourseInstance({ control, index, register, remove, errors }) {
                     <FormLabel>Completion date</FormLabel>
                     <FormControl>
                         <Controller
-                            name={`coursesSegment.${index}.completionDate`}
+                            name={`coursesSegment.courseList.${index}.completionDate`}
                             control={control}
                             render={({ field: { onChange, onBlur, value } }) => (
                                 <DatePicker
@@ -42,7 +48,9 @@ function CourseInstance({ control, index, register, remove, errors }) {
                                     onChange={onChange}
                                     onBlur={onBlur}
                                     classNameButton={
-                                        errors?.coursesSegment?.[index]?.startDate ? 'validation-error-outline' : ''
+                                        errors?.coursesSegment?.courseList?.[index]?.startDate
+                                            ? 'validation-error-outline'
+                                            : ''
                                     }
                                 />
                             )}
@@ -53,13 +61,15 @@ function CourseInstance({ control, index, register, remove, errors }) {
                     <FormLabel>Duration</FormLabel>
                     <FormControl>
                         <Controller
-                            name={`coursesSegment.${index}.duration`}
+                            name={`coursesSegment.courseList.${index}.duration`}
                             control={control}
                             render={({ field: { onChange, value } }) => (
                                 <Select onValueChange={onChange}>
                                     <SelectTrigger
                                         className={
-                                            errors?.coursesSegment?.[index]?.duration ? 'validation-error-outline' : ''
+                                            errors?.coursesSegment?.courseList?.[index]?.duration
+                                                ? 'validation-error-outline'
+                                                : ''
                                         }
                                     >
                                         <SelectValue>{value ? value : 'Select duration'}</SelectValue>
@@ -91,7 +101,7 @@ export function CoursesSegment({ form }) {
     } = form;
     const { fields, append, remove } = useFieldArray({
         control,
-        name: 'coursesSegment'
+        name: 'coursesSegment.courseList'
     });
 
     return (
