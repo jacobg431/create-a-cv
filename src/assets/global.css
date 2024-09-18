@@ -68,6 +68,14 @@
     }
 }
 
+.rdp [aria-hidden="true"]{
+    @apply hidden;
+}
+
+.rdp-vhidden{
+    @apply hidden;
+}
+
 .validation-error-outline {
     border: 1.5px solid red;
 }

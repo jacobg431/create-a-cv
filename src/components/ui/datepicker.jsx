@@ -1,17 +1,13 @@
 'use client';
 import { format } from 'date-fns';
 import { Calendar as CalendarIcon } from 'lucide-react';
-import { SliceArrayByValue, ReverseOrderOfArray } from '@/utils/ArrayHandler';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import yearsData from '@/data/years.json';
+//import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
-export function DatePicker({ disabled, value, onChange, classNameButton }) {
+export function DatePicker({ disabled, value, onChange, classNameButton, fromYear=1900, toYear=2100 }) {
     // Accepting external control
-
-    const years = ReverseOrderOfArray(SliceArrayByValue(yearsData.years, new Date().getFullYear()));
 
     return (
         <Popover>
@@ -26,24 +22,16 @@ export function DatePicker({ disabled, value, onChange, classNameButton }) {
                 </Button>
             </PopoverTrigger>
             <PopoverContent className="w-auto p-0">
-                <Select
-                    onValueChange={(yearValue) => {
-                        value = new Date().setFullYear(yearValue);
-                        onChange(value);
-                    }}
-                >
-                    <SelectTrigger>
-                        <SelectValue placeholder="Year" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        {years.map((year) => (
-                            <SelectItem key={year} value={year}>
-                                {year}
-                            </SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
-                <Calendar mode="single" selected={value} onSelect={onChange} initialFocus />
+                <Calendar 
+                    mode="single" 
+                    captionLayout="dropdown-buttons"
+                    selected={value} 
+                    onSelect={onChange}
+                    defaultMonth={value}
+                    fromYear={fromYear} 
+                    toYear={toYear}
+                    initialFocus 
+                />
             </PopoverContent>
         </Popover>
     );
