@@ -6,7 +6,7 @@ import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 //import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
-export function DatePicker({ disabled, value, onChange, classNameButton, fromYear=1900, toYear=2100 }) {
+export function DatePicker({ disabled, value, onChange, classNameButton, fromYear = 1900, toYear = 2100 }) {
     // Accepting external control
 
     return (
@@ -22,15 +22,15 @@ export function DatePicker({ disabled, value, onChange, classNameButton, fromYea
                 </Button>
             </PopoverTrigger>
             <PopoverContent className="w-auto p-0">
-                <Calendar 
-                    mode="single" 
+                <Calendar
+                    mode="single"
                     captionLayout="dropdown-buttons"
-                    selected={value} 
+                    selected={value}
                     onSelect={onChange}
                     defaultMonth={value}
-                    fromYear={fromYear} 
+                    fromYear={fromYear}
                     toYear={toYear}
-                    initialFocus 
+                    initialFocus
                 />
             </PopoverContent>
         </Popover>

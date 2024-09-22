@@ -83,21 +83,21 @@ export function CreateCvForm() {
             }
         }
     });
-    
+
     function onSubmit(values) {
-        const endpoint = 'http://localhost:8080/generate-pdf';
+        const endpoint = `${window.env.API_BASE_URL}/generate-pdf`;
         const settings = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(values)
         };
-    
+
         fetch(endpoint, settings)
-            .then(response => response.text())
-            .then(base64Data => base64ToPdf(base64Data))
-            .catch(_error => toast("Error generating PDF"))
-            //.catch(error => console.log(error));
-    
+            .then((response) => response.text())
+            .then((base64Data) => base64ToPdf(base64Data))
+            .catch((_error) => toast('Error generating PDF'));
+        //.catch(error => console.log(error));
+
         console.log('Form Values:', JSON.stringify(values));
     }
 

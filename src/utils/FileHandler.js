@@ -1,5 +1,4 @@
 export function base64ToPdf(base64Data) {
-
     const binaryString = window.atob(base64Data);
     const len = binaryString.length;
     const bytes = new Uint8Array(len);
