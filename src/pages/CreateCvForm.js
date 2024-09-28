@@ -1,7 +1,10 @@
+import 'dotenv';
+
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { validationSchema } from '@/utils/ValidationSchema';
 import { IsEmptyObject } from '@/utils/IsEmptyObject';
+import { base64ToPdf } from '@/utils/FileHandler';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { Toaster } from '@/components/ui/sonner';
@@ -84,7 +87,20 @@ export function CreateCvForm() {
     });
 
     function onSubmit(values) {
-        console.log('Form Values:', values);
+        const endpoint = `${process.env.REACT_APP_API_BASE_URL}/generate-pdf`;
+        const settings = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(values)
+        };
+
+        fetch(endpoint, settings)
+            .then((response) => response.text())
+            .then((base64Data) => base64ToPdf(base64Data))
+            .catch((_error) => toast('Error generating PDF'));
+        //.catch(error => console.log(error));
+
+        console.log('Form Values:', JSON.stringify(values));
     }
 
     function onError(errors) {
@@ -104,9 +120,9 @@ export function CreateCvForm() {
                 return accumulatedResult;
             }, []);
 
-        const errorMessages = flattenErrors(errors).join(', ');
+        //const errorMessages = flattenErrors(errors).join(', ');
         //console.log(errors)
-        console.log(errorMessages);
+        //console.log(errorMessages);
         const firstErrorMessage = flattenErrors(errors)[0];
         toast(firstErrorMessage);
     }

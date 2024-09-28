@@ -75,6 +75,7 @@ export function PersonaliaSegment({ form }) {
                                     value={value}
                                     onChange={onChange}
                                     onBlur={onBlur}
+                                    toYear={new Date().getFullYear()}
                                     classNameButton={
                                         errors.personaliaSegment?.dateOfBirth ? 'validation-error-outline' : ''
                                     }
