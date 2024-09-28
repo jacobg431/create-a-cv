@@ -1,3 +1,5 @@
+import 'dotenv';
+
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { validationSchema } from '@/utils/ValidationSchema';
@@ -85,7 +87,7 @@ export function CreateCvForm() {
     });
 
     function onSubmit(values) {
-        const endpoint = `${window.env.API_BASE_URL}/generate-pdf`;
+        const endpoint = `${process.env.REACT_APP_API_BASE_URL}/generate-pdf`;
         const settings = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
